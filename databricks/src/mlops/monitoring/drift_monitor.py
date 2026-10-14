@@ -58,8 +58,10 @@ def qualified(catalog, schema):
     return catalog+'.'+schema
 
 
-def reference_rows():
-    source = Path(__file__).resolve().parents[2]/'feature_store/ingestion/prepare_demo.py'
+def reference_rows(source=None):
+    if source is None:
+        source = Path(__file__).resolve().parents[2]/'feature_store/ingestion/prepare_demo.py'
+    source = Path(source)
     spec = importlib.util.spec_from_file_location('blueprint_reference_fixture', source)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -123,7 +125,7 @@ def run(args):
         raise ValueError('The selected registered model is not READY')
     model_uri = 'models:/'+model_name+'/'+str(version.version)
     training = client.get_run(version.run_id)
-    reference = reference_rows()
+    reference = reference_rows(args.reference_source)
     digest = training_digest(reference)
     if training.info.status != 'FINISHED' or training.data.tags.get('data_sha256') != digest:
         raise ValueError('The reference fixture does not match this model training run')
@@ -211,6 +213,12 @@ def run(args):
         mlflow.log_metrics({'max_psi': max(result['psi'] for result in metrics.values()),
                             'drift_alert_count': len(alerts), 'rows': len(current)})
         mlflow.log_dict(receipt, 'drift_receipt.json')
+    receipt_path = Path(args.receipt_path)
+    expected_prefix = '/Workspace/Users/'+args.expected_operator+'/.bundle/data-platform-blueprint-demo/dev/runtime/drift-receipts/'
+    if not str(receipt_path).startswith(expected_prefix) or receipt_path.name != args.batch_id+'.json':
+        raise ValueError('The receipt path is outside the approved runtime directory')
+    receipt_path.parent.mkdir(parents=True, exist_ok=True)
+    receipt_path.write_text(json.dumps(receipt, sort_keys=True)+'\n', encoding='utf-8')
     print(json.dumps(receipt, sort_keys=True))
     if alerts:
         raise RuntimeError('DRIFT_ALERT: '+', '.join(alerts)+'. Inspect drift_metrics and drift_alerts; no automatic retraining occurred.')
@@ -225,6 +233,8 @@ if __name__ == '__main__':
     p.add_argument('--expected-operator', required=True)
     p.add_argument('--experiment', required=True)
     p.add_argument('--model-version', default='latest')
+    p.add_argument('--reference-source', required=True)
+    p.add_argument('--receipt-path', required=True)
     p.add_argument('--batch-id', required=True)
     p.add_argument('--max-rows', type=int, default=10000)
     p.add_argument('--psi-threshold', type=float, default=.2)

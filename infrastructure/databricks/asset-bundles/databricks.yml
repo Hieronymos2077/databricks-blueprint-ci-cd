@@ -106,7 +106,11 @@
                 "{{job.run_id}}",
                 "--model-version",
                 "latest",
-                "--self-test"
+                "--self-test",
+                "--reference-source",
+                "${workspace.file_path}/databricks/src/feature_store/ingestion/prepare_demo.py",
+                "--receipt-path",
+                "${workspace.root_path}/runtime/drift-receipts/{{job.run_id}}.json"
               ]
             },
             "environment_key": "demo",
@@ -160,7 +164,11 @@
                 "{{job.run_id}}",
                 "--model-version",
                 "latest",
-                "--self-test"
+                "--self-test",
+                "--reference-source",
+                "${workspace.file_path}/databricks/src/feature_store/ingestion/prepare_demo.py",
+                "--receipt-path",
+                "${workspace.root_path}/runtime/drift-receipts/{{job.run_id}}.json"
               ]
             },
             "environment_key": "demo",

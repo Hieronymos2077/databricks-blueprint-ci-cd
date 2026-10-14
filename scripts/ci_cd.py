@@ -5,6 +5,7 @@ or process environment. Receipts and the deployment mutex live outside source.
 """
 import argparse
 import ast
+import base64
 from contextlib import contextmanager
 from datetime import datetime, timezone
 import hashlib
@@ -174,14 +175,14 @@ def wait_for_run(cfg, token, run_id, receipt, path):
             tasks = run.get('tasks') or []
             if len(tasks) != 1 or tasks[0].get('task_key') != 'drift_monitor':
                 raise ValueError('Smoke run has unexpected tasks')
-            output = api(cfg, token, 'GET', '/api/2.2/jobs/runs/get-output', query={'run_id': tasks[0]['run_id']})
-            if output.get('error') or output.get('logs_truncated'):
-                raise ValueError('Complete drift receipt is unavailable in task output')
-            lines = (output.get('logs') or '').splitlines()
-            evidence = next((json.loads(line) for line in reversed(lines)
-                             if line.startswith('{') and '"reference_data_sha256"' in line), None)
+            receipt_path = cfg['receipt_root'].rstrip('/')+'/'+str(run_id)+'.json'
+            output = api(cfg, token, 'GET', '/api/2.0/workspace/export',
+                         query={'path': receipt_path, 'format': 'AUTO'})
+            evidence = json.loads(base64.b64decode(output['content']))
             if not evidence or not evidence.get('self_test', {}).get('controls_passed') or evidence.get('source_tables_modified') is not False:
                 raise ValueError('The cloud drift detector controls were not verified')
+            if evidence.get('batch_id') != str(run_id):
+                raise ValueError('The monitoring receipt belongs to a different native run')
             if evidence.get('alert_fields'):
                 raise ValueError('Current data triggered a real drift alert')
             receipt.update(drift_receipt=evidence, task_run_id=tasks[0]['run_id'], run_state=state)

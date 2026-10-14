@@ -45,6 +45,14 @@ class DriftTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             drift.qualified('workspace', 'x; drop table')
 
+    def test_explicit_reference_works_without_script_file_global(self):
+        original = drift.__dict__.pop('__file__')
+        try:
+            source = ROOT/'databricks/src/feature_store/ingestion/prepare_demo.py'
+            self.assertEqual(len(drift.reference_rows(source)), 500)
+        finally:
+            drift.__dict__['__file__'] = original
+
 
 if __name__ == '__main__':
     unittest.main()
