@@ -1,0 +1,6 @@
+.ci-local.json
+.databricks/
+**/.databricks/
+__pycache__/
+*.pyc
+.pytest_cache/
