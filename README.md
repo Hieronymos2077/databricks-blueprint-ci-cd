@@ -18,10 +18,42 @@ Repeated invocation for an already verified commit returns its existing receipt.
 An operating-system mutex prevents competing local deployments. Native run
 idempotency prevents duplicate smoke runs after an uncertain start response.
 
-There is no GitHub Actions workflow, hosted CI service, recurring cloud schedule,
-serving endpoint or new standalone AWS infrastructure. The local computer must be
+After the drift smoke run, the same commit starts one bounded run of the platform
+pipeline and verifies its receipt (see "Platform pipeline" below).
+
+There is no GitHub Actions workflow, hosted CI service, active cloud schedule,
+serving endpoint or new standalone AWS infrastructure. The platform pipeline
+declares a daily schedule that is deployed PAUSED; the runner refuses any other
+schedule state. The local computer must be
 available when the commit is made. A failed post-commit check does not undo the Git
 commit; it blocks deployment and reports that CI/CD needs attention.
+
+## Platform pipeline
+
+The `platform_pipeline` job (`databricks/src/de_patterns/platform_pipeline.py`) adds the
+data-engineering path of the blueprint on the same synthetic fixture, as three tasks:
+
+1. `ingest_changes`: writes one deterministic batch of customer change events (inserts,
+   updates, deletes, one out-of-order late event and one invalid row) as JSON files to
+   the Unity Catalog Volume `workspace.blueprint_demo.landing`, then Auto Loader
+   (`cloudFiles`, `availableNow`) ingests only new files into `raw_customer_changes`.
+   The checkpoint lives in the Volume, so each file is ingested exactly once.
+2. `cdc_scd2`: invalid rows go to `customer_changes_quarantine`. Valid rows are reduced
+   to the latest event per customer and applied by a CDC `MERGE` (update, insert,
+   delete, ordered by event time) to `customers_current`, which has Change Data Feed
+   enabled. `customers_scd2` is then built from that table's Change Data Feed as an
+   SCD Type 2 history (`valid_from`, `valid_to`, `is_current`). Processed batches and
+   feed versions are stored in `platform_watermarks`, so reruns do not reapply them.
+3. `batch_score`: scores every current customer with the pinned Unity Catalog model
+   version `workspace.blueprint_demo.churn_model/1` and writes `churn_predictions`
+   keyed by scoring run. It verifies the five original fixture tables are unchanged
+   and writes a receipt to `runtime/platform-receipts/<run_id>.json`.
+
+Each run adds one new change batch, up to 30 batches. The schedule (daily 06:00 UTC)
+is PAUSED. Enabling it is an explicit operator decision because it bills compute daily.
+No online feature store or model serving endpoint is created: the registered model
+uses feature lookups, so serving it needs a persistent online store, which is a
+recurring cost. Batch scoring covers the scoring requirement without always-on resources.
 
 ## Drift monitoring
 

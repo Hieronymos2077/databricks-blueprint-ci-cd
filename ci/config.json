@@ -6,6 +6,7 @@
   "original_job_id": 789648897090823,
   "bundle_name": "data-platform-blueprint-demo",
   "receipt_root": "/Workspace/Users/lawsuser4@gmail.com/.bundle/data-platform-blueprint-demo/dev/runtime/drift-receipts",
+  "platform_receipt_root": "/Workspace/Users/lawsuser4@gmail.com/.bundle/data-platform-blueprint-demo/dev/runtime/platform-receipts",
   "deploy_branch": "main",
   "credential_key": "databricks-blueprint-workspace-provided"
 }

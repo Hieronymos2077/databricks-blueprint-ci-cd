@@ -56,11 +56,13 @@ def local_checks():
         raise ValueError('GitHub Actions are prohibited for this delivery')
     definition = json.loads((BUNDLE/'databricks.yml').read_text(encoding='utf-8'))
     jobs = definition['resources']['jobs']
-    if set(jobs) != {'ml_pipeline', 'drift_monitor'}:
-        raise ValueError('Only the reviewed pipeline and its drift monitor may be deployed')
-    for job in jobs.values():
-        if any(key in job for key in ('schedule', 'continuous', 'trigger', 'job_clusters')):
-            raise ValueError('Cloud schedules, continuous compute and classic clusters are disabled')
+    if set(jobs) != {'ml_pipeline', 'drift_monitor', 'platform_pipeline'}:
+        raise ValueError('Only the reviewed pipeline, its drift monitor and the platform pipeline may be deployed')
+    for name, job in jobs.items():
+        if any(key in job for key in ('continuous', 'trigger', 'job_clusters')):
+            raise ValueError('Continuous compute, triggers and classic clusters are disabled')
+        if 'schedule' in job and (name != 'platform_pipeline' or not paused_schedule(job['schedule'])):
+            raise ValueError('Only the platform pipeline may define a schedule, and it must stay PAUSED')
         if job.get('max_concurrent_runs') != 1 or not 0 < job.get('timeout_seconds', 0) <= 900:
             raise ValueError('Each job must have one bounded active run')
         for task in job['tasks']:
@@ -71,7 +73,12 @@ def local_checks():
                 raise ValueError('A bundle source path escapes the project or is missing')
     output = process([sys.executable, '-B', '-m', 'unittest', 'discover', '-s', 'tests'], timeout=90)
     return {'python_syntax': True, 'focused_checks': 'passed', 'cloud_schedules': False,
+            'paused_schedules': [name for name, job in jobs.items() if 'schedule' in job],
             'declared_jobs': list(jobs), 'test_output': output.strip()}
+
+
+def paused_schedule(schedule):
+    return isinstance(schedule, dict) and schedule.get('pause_status') == 'PAUSED' and bool(schedule.get('quartz_cron_expression'))
 
 
 @contextmanager
@@ -162,7 +169,32 @@ def cli(cfg, environment, arguments, timeout=180):
     return json.loads(text) if text.strip() else {}
 
 
-def wait_for_run(cfg, token, run_id, receipt, path):
+def verify_drift(evidence, run_id):
+    if not evidence or not evidence.get('self_test', {}).get('controls_passed') or evidence.get('source_tables_modified') is not False:
+        raise ValueError('The cloud drift detector controls were not verified')
+    if evidence.get('batch_id') != str(run_id):
+        raise ValueError('The monitoring receipt belongs to a different native run')
+    if evidence.get('alert_fields'):
+        raise ValueError('Current data triggered a real drift alert')
+
+
+def verify_platform(evidence, run_id):
+    if not evidence or evidence.get('run_id') != str(run_id) or evidence.get('source_tables_modified') is not False:
+        raise ValueError('The platform receipt belongs to a different native run or modified source tables')
+    if evidence.get('auto_loader_rows') != evidence.get('landed_rows') or not evidence.get('landed_rows'):
+        raise ValueError('Auto Loader did not ingest the landed batch exactly once')
+    if not evidence.get('quarantined_rows') or evidence.get('cdc_applied_batch') != evidence.get('batch_no'):
+        raise ValueError('Data quality quarantine or the CDC watermark was not verified')
+    if evidence.get('scd2_current_rows') != evidence.get('current_rows') or not evidence.get('scd2_closed_rows'):
+        raise ValueError('SCD2 history does not match the current table')
+    if evidence.get('predictions') != evidence.get('current_rows') or not str(evidence.get('model_uri', '')).endswith('/1'):
+        raise ValueError('Batch scoring did not cover every current customer with the pinned model version')
+    if len(evidence.get('original_table_sha256') or {}) != 5:
+        raise ValueError('Original fixture tables were not verified')
+
+
+def wait_for_run(cfg, token, run_id, receipt, path, tasks_expected=('drift_monitor',),
+                 receipt_root=None, verify=verify_drift, key='drift_receipt'):
     deadline = time.monotonic()+960
     while time.monotonic() < deadline:
         run = api(cfg, token, 'GET', '/api/2.2/jobs/runs/get', query={'run_id': run_id})
@@ -171,21 +203,22 @@ def wait_for_run(cfg, token, run_id, receipt, path):
             if state.get('result_state') != 'SUCCESS':
                 receipt.update(state='smoke_failed', result_state=state.get('result_state'), run_state=state)
                 save(path, receipt)
-                raise RuntimeError('Drift smoke run did not succeed; inspect the native job run')
+                raise RuntimeError('Smoke run '+str(run_id)+' did not succeed; inspect the native job run')
             tasks = run.get('tasks') or []
-            if len(tasks) != 1 or tasks[0].get('task_key') != 'drift_monitor':
+            if sorted(task.get('task_key') for task in tasks) != sorted(tasks_expected):
                 raise ValueError('Smoke run has unexpected tasks')
-            receipt_path = cfg['receipt_root'].rstrip('/')+'/'+str(run_id)+'.json'
+            if any((task.get('state') or {}).get('result_state') != 'SUCCESS' for task in tasks):
+                raise ValueError('A smoke run task did not succeed')
+            receipt_path = (receipt_root or cfg['receipt_root']).rstrip('/')+'/'+str(run_id)+'.json'
             output = api(cfg, token, 'GET', '/api/2.0/workspace/export',
                          query={'path': receipt_path, 'format': 'AUTO'})
             evidence = json.loads(base64.b64decode(output['content']))
-            if not evidence or not evidence.get('self_test', {}).get('controls_passed') or evidence.get('source_tables_modified') is not False:
-                raise ValueError('The cloud drift detector controls were not verified')
-            if evidence.get('batch_id') != str(run_id):
-                raise ValueError('The monitoring receipt belongs to a different native run')
-            if evidence.get('alert_fields'):
-                raise ValueError('Current data triggered a real drift alert')
-            receipt.update(drift_receipt=evidence, task_run_id=tasks[0]['run_id'], run_state=state)
+            verify(evidence, run_id)
+            if key == 'drift_receipt':
+                receipt.update(drift_receipt=evidence, task_run_id=tasks[0]['run_id'], run_state=state)
+            else:
+                receipt.update({key: evidence, key+'_task_run_ids': {task['task_key']: task['run_id'] for task in tasks},
+                                key+'_run_state': state})
             return
         time.sleep(12)
     receipt['state'] = 'run_still_active'; save(path, receipt)
@@ -230,11 +263,12 @@ def main():
                 save(rollback, original)
             latest_path = runtime/'latest.json'
             latest = json.loads(latest_path.read_text(encoding='utf-8')) if latest_path.exists() else {}
-            if latest.get('drift_job_id') and not receipt.get('run_id'):
-                active = api(cfg, token, 'GET', '/api/2.2/jobs/runs/list', query={
-                    'job_id': latest['drift_job_id'], 'active_only': 'true', 'limit': 25})
-                if active.get('runs'):
-                    raise ValueError('A previous drift run is active; reconcile it before deploying')
+            for prior_job in ('drift_job_id', 'platform_job_id'):
+                if latest.get(prior_job) and not receipt.get('run_id'):
+                    active = api(cfg, token, 'GET', '/api/2.2/jobs/runs/list', query={
+                        'job_id': latest[prior_job], 'active_only': 'true', 'limit': 25})
+                    if active.get('runs'):
+                        raise ValueError('A previous smoke run is active; reconcile it before deploying')
             if not receipt.get('run_id'):
                 receipt['state'] = 'validating'; save(path, receipt)
                 cli(cfg, environment, ['bundle', 'validate', '--strict', '-t', 'dev'])
@@ -249,18 +283,38 @@ def main():
                 settings = definition['settings']
                 if settings.get('schedule') or settings.get('continuous') or settings.get('trigger') or settings.get('max_concurrent_runs') != 1:
                     raise ValueError('Drift job is not bounded and manual')
+                platform_id = int(resources['platform_pipeline']['id'])
+                platform = api(cfg, token, 'GET', '/api/2.2/jobs/get', query={'job_id': platform_id})['settings']
+                if (not paused_schedule(platform.get('schedule')) or platform.get('continuous') or platform.get('trigger')
+                        or platform.get('max_concurrent_runs') != 1):
+                    raise ValueError('Platform job schedule is not PAUSED or the job is not bounded')
+                receipt.update(platform_job_id=platform_id, platform_schedule=platform['schedule'])
                 receipt.update(state='starting_smoke', drift_job_id=job_id,
                     idempotency_token=hashlib.sha256((cfg['host']+str(job_id)+commit).encode()).hexdigest())
                 save(path, receipt)
                 response = api(cfg, token, 'POST', '/api/2.2/jobs/run-now',
                     data={'job_id': job_id, 'idempotency_token': receipt['idempotency_token']})
                 receipt.update(state='smoke_running', run_id=response['run_id']); save(path, receipt)
-            wait_for_run(cfg, token, receipt['run_id'], receipt, path)
+            if not receipt.get('drift_receipt'):
+                wait_for_run(cfg, token, receipt['run_id'], receipt, path)
+                save(path, receipt)
+            if not receipt.get('platform_run_id'):
+                receipt['platform_idempotency_token'] = hashlib.sha256(
+                    (cfg['host']+str(receipt['platform_job_id'])+commit+'platform').encode()).hexdigest()
+                receipt['state'] = 'starting_platform_smoke'; save(path, receipt)
+                response = api(cfg, token, 'POST', '/api/2.2/jobs/run-now', data={
+                    'job_id': receipt['platform_job_id'], 'idempotency_token': receipt['platform_idempotency_token']})
+                receipt.update(state='platform_smoke_running', platform_run_id=response['run_id']); save(path, receipt)
+            wait_for_run(cfg, token, receipt['platform_run_id'], receipt, path,
+                         tasks_expected=('ingest_changes', 'cdc_scd2', 'batch_score'),
+                         receipt_root=cfg['platform_receipt_root'], verify=verify_platform, key='platform_receipt')
             receipt.update(state='verified', verified_at=datetime.now(timezone.utc).isoformat())
             save(path, receipt); save(runtime/'latest.json', receipt)
             print(json.dumps({'state': 'verified', 'commit': commit, 'run_id': receipt['run_id'],
                 'drift_job_id': receipt['drift_job_id'], 'receipt': str(path),
-                'model_uri': receipt['drift_receipt']['model_uri'], 'cloud_schedule': False}))
+                'model_uri': receipt['drift_receipt']['model_uri'], 'cloud_schedule': False,
+                'platform_job_id': receipt['platform_job_id'], 'platform_run_id': receipt['platform_run_id'],
+                'platform_schedule_paused': True}))
             return 0
         except Exception as error:
             receipt['last_error'] = str(error)[:800]

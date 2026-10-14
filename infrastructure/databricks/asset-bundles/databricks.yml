@@ -189,6 +189,127 @@
             }
           }
         ]
+      },
+      "platform_pipeline": {
+        "name": "${bundle.name}-platform-pipeline",
+        "max_concurrent_runs": 1,
+        "timeout_seconds": 900,
+        "queue": {
+          "enabled": false
+        },
+        "schedule": {
+          "quartz_cron_expression": "0 0 6 * * ?",
+          "timezone_id": "UTC",
+          "pause_status": "PAUSED"
+        },
+        "tasks": [
+          {
+            "task_key": "ingest_changes",
+            "spark_python_task": {
+              "python_file": "../../../databricks/src/de_patterns/platform_pipeline.py",
+              "parameters": [
+                "--step",
+                "ingest",
+                "--catalog",
+                "${var.catalog}",
+                "--schema",
+                "${var.schema}",
+                "--expected-host",
+                "${var.workspace_host}",
+                "--expected-operator",
+                "${workspace.current_user.userName}",
+                "--run-id",
+                "{{job.run_id}}",
+                "--fixture-source",
+                "${workspace.file_path}/databricks/src/feature_store/ingestion/prepare_demo.py"
+              ]
+            },
+            "environment_key": "demo",
+            "timeout_seconds": 480,
+            "max_retries": 0,
+            "retry_on_timeout": false,
+            "disable_auto_optimization": true
+          },
+          {
+            "task_key": "cdc_scd2",
+            "spark_python_task": {
+              "python_file": "../../../databricks/src/de_patterns/platform_pipeline.py",
+              "parameters": [
+                "--step",
+                "cdc",
+                "--catalog",
+                "${var.catalog}",
+                "--schema",
+                "${var.schema}",
+                "--expected-host",
+                "${var.workspace_host}",
+                "--expected-operator",
+                "${workspace.current_user.userName}",
+                "--run-id",
+                "{{job.run_id}}",
+                "--fixture-source",
+                "${workspace.file_path}/databricks/src/feature_store/ingestion/prepare_demo.py"
+              ]
+            },
+            "environment_key": "demo",
+            "timeout_seconds": 480,
+            "max_retries": 0,
+            "retry_on_timeout": false,
+            "disable_auto_optimization": true,
+            "depends_on": [
+              {
+                "task_key": "ingest_changes"
+              }
+            ]
+          },
+          {
+            "task_key": "batch_score",
+            "spark_python_task": {
+              "python_file": "../../../databricks/src/de_patterns/platform_pipeline.py",
+              "parameters": [
+                "--step",
+                "score",
+                "--catalog",
+                "${var.catalog}",
+                "--schema",
+                "${var.schema}",
+                "--expected-host",
+                "${var.workspace_host}",
+                "--expected-operator",
+                "${workspace.current_user.userName}",
+                "--run-id",
+                "{{job.run_id}}",
+                "--fixture-source",
+                "${workspace.file_path}/databricks/src/feature_store/ingestion/prepare_demo.py",
+                "--model-version",
+                "1",
+                "--receipt-path",
+                "${workspace.root_path}/runtime/platform-receipts/{{job.run_id}}.json"
+              ]
+            },
+            "environment_key": "demo",
+            "timeout_seconds": 480,
+            "max_retries": 0,
+            "retry_on_timeout": false,
+            "disable_auto_optimization": true,
+            "depends_on": [
+              {
+                "task_key": "cdc_scd2"
+              }
+            ]
+          }
+        ],
+        "environments": [
+          {
+            "environment_key": "demo",
+            "spec": {
+              "environment_version": "4",
+              "dependencies": [
+                "databricks-feature-engineering==0.18.1"
+              ]
+            }
+          }
+        ]
       }
     }
   }
