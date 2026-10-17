@@ -1,0 +1,23 @@
+[
+  {
+    "catalog_id": "2c81ee21-dbba-4fff-93e8-3883c73f6650",
+    "catalog_name": "workspace",
+    "created_at": 1791993398828,
+    "created_by": "lawsuser4@gmail.com",
+    "etag": "CAESCAAAAaE7IUYs",
+    "full_name": "workspace.blueprint_demo.landing",
+    "metastore_id": "63d14e6f-0089-46ea-a40c-d0882b28e341",
+    "name": "landing",
+    "owner": "lawsuser4@gmail.com",
+    "resource_name": "/metastores/63d14e6f-0089-46ea-a40c-d0882b28e341/volumes/09c83ec2-1d68-4f0b-adde-49a30e30ae97",
+    "schema_id": "b559d8f7-1206-4f50-80d7-eb2d3e258f22",
+    "schema_name": "blueprint_demo",
+    "securable_kind": "VOLUME_DB_STORAGE",
+    "securable_type": "VOLUME",
+    "storage_location": "s3://dbstorage-prod-hpo91wnqst/uc/a484b8ca-0893-4fb9-a142-ab251c64e15c/63d14e6f-0089-46ea-a40c-d0882b28e341/__unitystorage/catalogs/2c81ee21-dbba-4fff-93e8-3883c73f6650/volumes/09c83ec2-1d68-4f0b-adde-49a30e30ae97",
+    "updated_at": 1791993398828,
+    "updated_by": "lawsuser4@gmail.com",
+    "volume_id": "09c83ec2-1d68-4f0b-adde-49a30e30ae97",
+    "volume_type": "MANAGED"
+  }
+]

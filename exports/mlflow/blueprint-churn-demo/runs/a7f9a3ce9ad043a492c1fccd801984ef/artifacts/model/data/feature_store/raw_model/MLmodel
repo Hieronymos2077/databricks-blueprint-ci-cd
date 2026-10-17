@@ -1,0 +1,26 @@
+databricks_runtime: client.4.10
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.3
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.6.1
+is_signature_from_type_hint: false
+mlflow_version: 2.22.0
+model_size_bytes: 136843
+model_uuid: 9ec0d90469454e65a064f8357e6a1505
+prompts: null
+signature:
+  inputs: null
+  outputs: '[{"type": "integer", "name": "churn", "required": true}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2026-10-13 12:35:53.823565'

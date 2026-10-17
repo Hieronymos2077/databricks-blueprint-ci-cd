@@ -1,0 +1,42 @@
+{
+  "browse_only": false,
+  "cache_version_info": {
+    "metastore_version": -1
+  },
+  "catalog_name": "workspace",
+  "catalog_type": "MANAGED_CATALOG",
+  "comment": "",
+  "created_at": 1791894095098,
+  "created_by": "lawsuser4@gmail.com",
+  "effective_auto_maintenance_flag": {
+    "value": "DISABLE"
+  },
+  "effective_predictive_optimization_flag": {
+    "value": "DISABLE"
+  },
+  "enable_auto_maintenance": "DISABLE",
+  "enable_predictive_optimization": "DISABLE",
+  "etag": "CAESCAAAAaE1Ng8m",
+  "full_name": "workspace.blueprint_demo",
+  "metastore_id": "63d14e6f-0089-46ea-a40c-d0882b28e341",
+  "metastore_version": -1,
+  "name": "blueprint_demo",
+  "owner": "lawsuser4@gmail.com",
+  "properties": {
+    "owner": "lawsuser4@gmail.com",
+    "unity.catalog.resourceId": "b559d8f7-1206-4f50-80d7-eb2d3e258f22"
+  },
+  "related_entity_hints": {
+    "policy": {
+      "exists": false
+    },
+    "tag": {
+      "exists": false
+    }
+  },
+  "schema_id": "b559d8f7-1206-4f50-80d7-eb2d3e258f22",
+  "securable_kind": "SCHEMA_DB_STORAGE",
+  "securable_type": "SCHEMA",
+  "updated_at": 1791894097702,
+  "updated_by": "403a969d-4c0d-4eaa-b993-b9b93d087325"
+}

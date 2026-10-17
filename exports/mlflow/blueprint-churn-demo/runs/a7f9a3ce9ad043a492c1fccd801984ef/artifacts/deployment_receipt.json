@@ -1,0 +1,14 @@
+{
+  "run_id": "a7f9a3ce9ad043a492c1fccd801984ef",
+  "metrics": {
+    "accuracy": 0.93,
+    "f1": 0.5882352941176471,
+    "roc_auc": 0.9743589743589743
+  },
+  "train_rows": 400,
+  "holdout_rows": 100,
+  "model_name": "workspace.blueprint_demo.churn_model",
+  "data_sha256": "85d4220b98b7dae789849ed4440d6a0c1f209df574785b8ede0b55861d2b59a9",
+  "model_version": "1",
+  "registered": true
+}

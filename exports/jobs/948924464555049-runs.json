@@ -1,0 +1,295 @@
+[
+  {
+    "cleanup_duration": 0,
+    "creator_user_name": "lawsuser4@gmail.com",
+    "effective_performance_target": "PERFORMANCE_OPTIMIZED",
+    "end_time": 1791993346335,
+    "environments": [
+      {
+        "environment_key": "demo",
+        "spec": {
+          "dependencies": [
+            "databricks-feature-engineering==0.18.1"
+          ],
+          "environment_version": "4"
+        }
+      }
+    ],
+    "execution_duration": 110000,
+    "format": "MULTI_TASK",
+    "job_id": 948924464555049,
+    "job_run_id": 646426876189293,
+    "number_in_job": 646426876189293,
+    "original_attempt_run_id": 646426876189293,
+    "run_duration": 114330,
+    "run_id": 646426876189293,
+    "run_name": "[dev lawsuser4] data-platform-blueprint-demo-drift-monitor",
+    "run_page_url": "https://dbc-939dcb75-eac7.cloud.databricks.com/?o=7474660191855131#job/948924464555049/run/646426876189293",
+    "run_type": "JOB_RUN",
+    "setup_duration": 3000,
+    "start_time": 1791993232005,
+    "state": {
+      "life_cycle_state": "TERMINATED",
+      "result_state": "SUCCESS",
+      "state_message": "",
+      "user_cancelled_or_timedout": false
+    },
+    "status": {
+      "state": "TERMINATED",
+      "termination_details": {
+        "code": "SUCCESS",
+        "message": "",
+        "type": "SUCCESS"
+      }
+    },
+    "tasks": [
+      {
+        "attempt_number": 0,
+        "cleanup_duration": 0,
+        "effective_performance_target": "PERFORMANCE_OPTIMIZED",
+        "end_time": 1791993345917,
+        "environment_key": "demo",
+        "execution_duration": 110000,
+        "run_id": 820027141750829,
+        "run_if": "ALL_SUCCESS",
+        "run_page_url": "https://dbc-939dcb75-eac7.cloud.databricks.com/?o=7474660191855131#job/948924464555049/run/820027141750829",
+        "setup_duration": 3000,
+        "spark_python_task": {
+          "parameters": [
+            "--catalog",
+            "workspace",
+            "--schema",
+            "blueprint_demo",
+            "--expected-host",
+            "https://dbc-939dcb75-eac7.cloud.databricks.com",
+            "--expected-operator",
+            "lawsuser4@gmail.com",
+            "--experiment",
+            "/Users/lawsuser4@gmail.com/blueprint-drift-monitor",
+            "--batch-id",
+            "{{job.run_id}}",
+            "--model-version",
+            "latest",
+            "--self-test",
+            "--reference-source",
+            "/Workspace/Users/lawsuser4@gmail.com/.bundle/data-platform-blueprint-demo/dev/files/databricks/src/feature_store/ingestion/prepare_demo.py",
+            "--receipt-path",
+            "/Workspace/Users/lawsuser4@gmail.com/.bundle/data-platform-blueprint-demo/dev/runtime/drift-receipts/{{job.run_id}}.json"
+          ],
+          "python_file": "/Workspace/Users/lawsuser4@gmail.com/.bundle/data-platform-blueprint-demo/dev/files/databricks/src/mlops/monitoring/drift_monitor.py"
+        },
+        "start_time": 1791993232044,
+        "state": {
+          "life_cycle_state": "TERMINATED",
+          "result_state": "SUCCESS",
+          "state_message": "",
+          "user_cancelled_or_timedout": false
+        },
+        "status": {
+          "state": "TERMINATED",
+          "termination_details": {
+            "code": "SUCCESS",
+            "message": "",
+            "type": "SUCCESS"
+          }
+        },
+        "task_key": "drift_monitor"
+      }
+    ],
+    "trigger": "ONE_TIME"
+  },
+  {
+    "cleanup_duration": 0,
+    "creator_user_name": "lawsuser4@gmail.com",
+    "effective_performance_target": "PERFORMANCE_OPTIMIZED",
+    "end_time": 1791985805035,
+    "environments": [
+      {
+        "environment_key": "demo",
+        "spec": {
+          "dependencies": [
+            "databricks-feature-engineering==0.18.1"
+          ],
+          "environment_version": "4"
+        }
+      }
+    ],
+    "execution_duration": 113000,
+    "format": "MULTI_TASK",
+    "job_id": 948924464555049,
+    "job_run_id": 676252877123157,
+    "number_in_job": 676252877123157,
+    "original_attempt_run_id": 676252877123157,
+    "run_duration": 118344,
+    "run_id": 676252877123157,
+    "run_name": "[dev lawsuser4] data-platform-blueprint-demo-drift-monitor",
+    "run_page_url": "https://dbc-939dcb75-eac7.cloud.databricks.com/?o=7474660191855131#job/948924464555049/run/676252877123157",
+    "run_type": "JOB_RUN",
+    "setup_duration": 4000,
+    "start_time": 1791985686691,
+    "state": {
+      "life_cycle_state": "TERMINATED",
+      "result_state": "SUCCESS",
+      "state_message": "",
+      "user_cancelled_or_timedout": false
+    },
+    "status": {
+      "state": "TERMINATED",
+      "termination_details": {
+        "code": "SUCCESS",
+        "message": "",
+        "type": "SUCCESS"
+      }
+    },
+    "tasks": [
+      {
+        "attempt_number": 0,
+        "cleanup_duration": 0,
+        "effective_performance_target": "PERFORMANCE_OPTIMIZED",
+        "end_time": 1791985804639,
+        "environment_key": "demo",
+        "execution_duration": 113000,
+        "run_id": 526520314815544,
+        "run_if": "ALL_SUCCESS",
+        "run_page_url": "https://dbc-939dcb75-eac7.cloud.databricks.com/?o=7474660191855131#job/948924464555049/run/526520314815544",
+        "setup_duration": 4000,
+        "spark_python_task": {
+          "parameters": [
+            "--catalog",
+            "workspace",
+            "--schema",
+            "blueprint_demo",
+            "--expected-host",
+            "https://dbc-939dcb75-eac7.cloud.databricks.com",
+            "--expected-operator",
+            "lawsuser4@gmail.com",
+            "--experiment",
+            "/Users/lawsuser4@gmail.com/blueprint-drift-monitor",
+            "--batch-id",
+            "{{job.run_id}}",
+            "--model-version",
+            "latest",
+            "--self-test",
+            "--reference-source",
+            "/Workspace/Users/lawsuser4@gmail.com/.bundle/data-platform-blueprint-demo/dev/files/databricks/src/feature_store/ingestion/prepare_demo.py",
+            "--receipt-path",
+            "/Workspace/Users/lawsuser4@gmail.com/.bundle/data-platform-blueprint-demo/dev/runtime/drift-receipts/{{job.run_id}}.json"
+          ],
+          "python_file": "/Workspace/Users/lawsuser4@gmail.com/.bundle/data-platform-blueprint-demo/dev/files/databricks/src/mlops/monitoring/drift_monitor.py"
+        },
+        "start_time": 1791985686726,
+        "state": {
+          "life_cycle_state": "TERMINATED",
+          "result_state": "SUCCESS",
+          "state_message": "",
+          "user_cancelled_or_timedout": false
+        },
+        "status": {
+          "state": "TERMINATED",
+          "termination_details": {
+            "code": "SUCCESS",
+            "message": "",
+            "type": "SUCCESS"
+          }
+        },
+        "task_key": "drift_monitor"
+      }
+    ],
+    "trigger": "ONE_TIME"
+  },
+  {
+    "cleanup_duration": 0,
+    "creator_user_name": "lawsuser4@gmail.com",
+    "effective_performance_target": "PERFORMANCE_OPTIMIZED",
+    "end_time": 1791985556437,
+    "environments": [
+      {
+        "environment_key": "demo",
+        "spec": {
+          "dependencies": [
+            "databricks-feature-engineering==0.18.1"
+          ],
+          "environment_version": "4"
+        }
+      }
+    ],
+    "execution_duration": 29000,
+    "format": "MULTI_TASK",
+    "job_id": 948924464555049,
+    "job_run_id": 708151094398630,
+    "number_in_job": 708151094398630,
+    "original_attempt_run_id": 708151094398630,
+    "run_duration": 33943,
+    "run_id": 708151094398630,
+    "run_name": "[dev lawsuser4] data-platform-blueprint-demo-drift-monitor",
+    "run_page_url": "https://dbc-939dcb75-eac7.cloud.databricks.com/?o=7474660191855131#job/948924464555049/run/708151094398630",
+    "run_type": "JOB_RUN",
+    "setup_duration": 4000,
+    "start_time": 1791985522494,
+    "state": {
+      "life_cycle_state": "INTERNAL_ERROR",
+      "result_state": "FAILED",
+      "state_message": "Task drift_monitor failed with message: Workload failed, see run output for details.",
+      "user_cancelled_or_timedout": false
+    },
+    "status": {
+      "state": "TERMINATED",
+      "termination_details": {
+        "code": "RUN_EXECUTION_ERROR",
+        "message": "Task drift_monitor failed with message: Workload failed, see run output for details.",
+        "type": "CLIENT_ERROR"
+      }
+    },
+    "tasks": [
+      {
+        "attempt_number": 0,
+        "cleanup_duration": 0,
+        "effective_performance_target": "PERFORMANCE_OPTIMIZED",
+        "end_time": 1791985556062,
+        "environment_key": "demo",
+        "execution_duration": 29000,
+        "run_id": 295349860231610,
+        "run_if": "ALL_SUCCESS",
+        "run_page_url": "https://dbc-939dcb75-eac7.cloud.databricks.com/?o=7474660191855131#job/948924464555049/run/295349860231610",
+        "setup_duration": 4000,
+        "spark_python_task": {
+          "parameters": [
+            "--catalog",
+            "workspace",
+            "--schema",
+            "blueprint_demo",
+            "--expected-host",
+            "https://dbc-939dcb75-eac7.cloud.databricks.com",
+            "--expected-operator",
+            "lawsuser4@gmail.com",
+            "--experiment",
+            "/Users/lawsuser4@gmail.com/blueprint-drift-monitor",
+            "--batch-id",
+            "{{job.run_id}}",
+            "--model-version",
+            "latest",
+            "--self-test"
+          ],
+          "python_file": "/Workspace/Users/lawsuser4@gmail.com/.bundle/data-platform-blueprint-demo/dev/files/databricks/src/mlops/monitoring/drift_monitor.py"
+        },
+        "start_time": 1791985522538,
+        "state": {
+          "life_cycle_state": "TERMINATED",
+          "result_state": "FAILED",
+          "state_message": "Workload failed, see run output for details",
+          "user_cancelled_or_timedout": false
+        },
+        "status": {
+          "state": "TERMINATED",
+          "termination_details": {
+            "code": "RUN_EXECUTION_ERROR",
+            "message": "Workload failed, see run output for details",
+            "type": "CLIENT_ERROR"
+          }
+        },
+        "task_key": "drift_monitor"
+      }
+    ],
+    "trigger": "ONE_TIME"
+  }
+]

@@ -1,0 +1,38 @@
+[
+  [
+    "1",
+    "2026-10-14T15:59:27.000Z",
+    "75682518775965",
+    "lawsuser4@gmail.com",
+    "MERGE",
+    "{\"predicate\":\"[\\\"((scoring_run_id#16209 = scoring_run_id#16196) AND (customer_id#16207L = customer_id#16185L))\\\"]\",\"clusterBy\":\"[]\",\"matchedPredicates\":\"[]\",\"statsOnLoad\":\"false\",\"notMatchedBySourcePredicates\":\"[]\",\"notMatchedPredicates\":\"[{\\\"actionType\\\":\\\"insert\\\"}]\"}",
+    "{\"jobName\":\"[dev lawsuser4] data-platform-blueprint-demo-platform-pipeline\",\"jobOwnerId\":\"75682518775965\",\"workspaceId\":\"7474660191855131\",\"jobId\":\"106481472574404\",\"jobRunId\":\"971704194351633\",\"runId\":\"1003817897236973\",\"triggerType\":\"manual\"}",
+    null,
+    "cac4ea61-0516-4958-88f0-c8a983abbec2",
+    "1014-155617-fxgkk94u-v2n",
+    "0",
+    "WriteSerializable",
+    "false",
+    "{\"numTargetRowsCopied\":\"0\",\"numTargetRowsDeleted\":\"0\",\"numTargetFilesAdded\":\"1\",\"numTargetBytesAdded\":\"2484\",\"numTargetBytesRemoved\":\"0\",\"numTargetDeletionVectorsAdded\":\"0\",\"numTargetRowsMatchedUpdated\":\"0\",\"executionTimeMs\":\"23662\",\"materializeSourceTimeMs\":\"8\",\"numTargetRowsInserted\":\"503\",\"numTargetRowsMatchedDeleted\":\"0\",\"numTargetDeletionVectorsUpdated\":\"0\",\"scanTimeMs\":\"0\",\"numTargetRowsUpdated\":\"0\",\"numOutputRows\":\"503\",\"numTargetDeletionVectorsRemoved\":\"0\",\"numTargetRowsNotMatchedBySourceUpdated\":\"0\",\"numTargetChangeFilesAdded\":\"0\",\"numSourceRows\":\"503\",\"numTargetFilesRemoved\":\"0\",\"numTargetRowsNotMatchedBySourceDeleted\":\"0\",\"rewriteTimeMs\":\"23623\"}",
+    null,
+    "Databricks-Runtime/19.9.x-photon-scala2.13"
+  ],
+  [
+    "0",
+    "2026-10-14T15:59:01.000Z",
+    "75682518775965",
+    "lawsuser4@gmail.com",
+    "CREATE TABLE",
+    "{\"partitionBy\":\"[]\",\"clusterBy\":\"[]\",\"description\":null,\"isManaged\":\"true\",\"properties\":\"{\\\"delta.parquet.compression.codec\\\":\\\"zstd\\\",\\\"delta.parquet.format.version.afe.internal\\\":\\\"2.12.0\\\",\\\"delta.enableDeletionVectors\\\":\\\"true\\\",\\\"delta.parquet.format.version\\\":\\\"2.12.0\\\",\\\"delta.enableRowTracking\\\":\\\"true\\\",\\\"delta.rowTracking.materializedRowCommitVersionColumnName\\\":\\\"_row-commit-version-col-53ede903-9a61-44f3-bc5b-d018a1558d68\\\",\\\"delta.rowTracking.materializedRowIdColumnName\\\":\\\"_row-id-col-61c170af-cf95-47eb-9780-99b439eb1a4e\\\",\\\"io.unitycatalog.tableId\\\":\\\"5782a26c-5dc9-44ae-af30-f842502b9517\\\",\\\"blueprint.component\\\":\\\"blueprint-platform-v1\\\"}\",\"statsOnLoad\":\"false\"}",
+    "{\"jobName\":\"[dev lawsuser4] data-platform-blueprint-demo-platform-pipeline\",\"jobOwnerId\":\"75682518775965\",\"workspaceId\":\"7474660191855131\",\"jobId\":\"106481472574404\",\"jobRunId\":\"971704194351633\",\"runId\":\"1003817897236973\",\"triggerType\":\"manual\"}",
+    null,
+    "c4a60670-d598-4f6a-865e-5d125f17dcc2",
+    "1014-155617-fxgkk94u-v2n",
+    null,
+    "WriteSerializable",
+    "true",
+    "{}",
+    null,
+    "Databricks-Runtime/19.9.x-photon-scala2.13"
+  ]
+]

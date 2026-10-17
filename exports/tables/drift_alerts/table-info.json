@@ -1,0 +1,181 @@
+{
+  "browse_only": false,
+  "cache_version_info": {
+    "metastore_version": -1
+  },
+  "catalog_id": "2c81ee21-dbba-4fff-93e8-3883c73f6650",
+  "catalog_name": "workspace",
+  "columns": [
+    {
+      "column_masks": {},
+      "name": "batch_id",
+      "nullable": true,
+      "position": 0,
+      "type_json": "{\"name\":\"batch_id\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}}",
+      "type_name": "STRING",
+      "type_precision": 0,
+      "type_scale": 0,
+      "type_text": "string"
+    },
+    {
+      "column_masks": {},
+      "name": "observed_at",
+      "nullable": true,
+      "position": 1,
+      "type_json": "{\"name\":\"observed_at\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}}",
+      "type_name": "STRING",
+      "type_precision": 0,
+      "type_scale": 0,
+      "type_text": "string"
+    },
+    {
+      "column_masks": {},
+      "name": "model_uri",
+      "nullable": true,
+      "position": 2,
+      "type_json": "{\"name\":\"model_uri\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}}",
+      "type_name": "STRING",
+      "type_precision": 0,
+      "type_scale": 0,
+      "type_text": "string"
+    },
+    {
+      "column_masks": {},
+      "name": "field",
+      "nullable": true,
+      "position": 3,
+      "type_json": "{\"name\":\"field\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}}",
+      "type_name": "STRING",
+      "type_precision": 0,
+      "type_scale": 0,
+      "type_text": "string"
+    },
+    {
+      "column_masks": {},
+      "name": "psi",
+      "nullable": true,
+      "position": 4,
+      "type_json": "{\"name\":\"psi\",\"type\":\"double\",\"nullable\":true,\"metadata\":{}}",
+      "type_name": "DOUBLE",
+      "type_precision": 0,
+      "type_scale": 0,
+      "type_text": "double"
+    },
+    {
+      "column_masks": {},
+      "name": "reference_missing_rate",
+      "nullable": true,
+      "position": 5,
+      "type_json": "{\"name\":\"reference_missing_rate\",\"type\":\"double\",\"nullable\":true,\"metadata\":{}}",
+      "type_name": "DOUBLE",
+      "type_precision": 0,
+      "type_scale": 0,
+      "type_text": "double"
+    },
+    {
+      "column_masks": {},
+      "name": "current_missing_rate",
+      "nullable": true,
+      "position": 6,
+      "type_json": "{\"name\":\"current_missing_rate\",\"type\":\"double\",\"nullable\":true,\"metadata\":{}}",
+      "type_name": "DOUBLE",
+      "type_precision": 0,
+      "type_scale": 0,
+      "type_text": "double"
+    },
+    {
+      "column_masks": {},
+      "name": "current_rows",
+      "nullable": true,
+      "position": 7,
+      "type_json": "{\"name\":\"current_rows\",\"type\":\"long\",\"nullable\":true,\"metadata\":{}}",
+      "type_name": "LONG",
+      "type_precision": 0,
+      "type_scale": 0,
+      "type_text": "bigint"
+    },
+    {
+      "column_masks": {},
+      "name": "status",
+      "nullable": true,
+      "position": 8,
+      "type_json": "{\"name\":\"status\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}}",
+      "type_name": "STRING",
+      "type_precision": 0,
+      "type_scale": 0,
+      "type_text": "string"
+    }
+  ],
+  "created_at": 1791985798044,
+  "created_by": "lawsuser4@gmail.com",
+  "data_access_configuration_id": "00000000-0000-0000-0000-000000000000",
+  "data_source_format": "DELTA",
+  "delta_runtime_properties_kvpairs": {},
+  "effective_auto_maintenance_flag": {
+    "value": "DISABLE"
+  },
+  "effective_predictive_optimization_flag": {
+    "value": "DISABLE"
+  },
+  "enable_auto_maintenance": "DISABLE",
+  "enable_predictive_optimization": "DISABLE",
+  "etag": "CAESCAAAAaE7IGKL",
+  "full_name": "workspace.blueprint_demo.drift_alerts",
+  "generation": 2,
+  "metastore_id": "63d14e6f-0089-46ea-a40c-d0882b28e341",
+  "metastore_version": -1,
+  "name": "drift_alerts",
+  "owner": "lawsuser4@gmail.com",
+  "properties": {
+    "blueprint.component": "blueprint-drift-v1",
+    "delta.enableDeletionVectors": "true",
+    "delta.enableRowTracking": "true",
+    "delta.feature.appendOnly": "supported",
+    "delta.feature.deletionVectors": "supported",
+    "delta.feature.domainMetadata": "supported",
+    "delta.feature.invariants": "supported",
+    "delta.feature.rowTracking": "supported",
+    "delta.lastCommitTimestamp": "1791985798000",
+    "delta.lastUpdateVersion": "0",
+    "delta.minReaderVersion": "3",
+    "delta.minWriterVersion": "7",
+    "delta.parquet.compression.codec": "zstd",
+    "delta.parquet.format.version": "2.12.0",
+    "delta.parquet.format.version.afe.internal": "2.12.0",
+    "delta.rowTracking.materializedRowCommitVersionColumnName": "_row-commit-version-col-ee8bab2f-e2d2-45ff-9cb4-5270b25ba6c9",
+    "delta.rowTracking.materializedRowIdColumnName": "_row-id-col-046c2a52-0e0a-4f01-8ee2-7c0c834f89b6",
+    "io.unitycatalog.tableId": "f8cd564b-585d-4b64-8831-c9724391d2e2"
+  },
+  "properties_pairs": {
+    "properties": {
+      "blueprint.component": "blueprint-drift-v1",
+      "delta.enableDeletionVectors": "true",
+      "delta.enableRowTracking": "true",
+      "delta.feature.appendOnly": "supported",
+      "delta.feature.deletionVectors": "supported",
+      "delta.feature.domainMetadata": "supported",
+      "delta.feature.invariants": "supported",
+      "delta.feature.rowTracking": "supported",
+      "delta.lastCommitTimestamp": "1791985798000",
+      "delta.lastUpdateVersion": "0",
+      "delta.minReaderVersion": "3",
+      "delta.minWriterVersion": "7",
+      "delta.parquet.compression.codec": "zstd",
+      "delta.parquet.format.version": "2.12.0",
+      "delta.parquet.format.version.afe.internal": "2.12.0",
+      "delta.rowTracking.materializedRowCommitVersionColumnName": "_row-commit-version-col-ee8bab2f-e2d2-45ff-9cb4-5270b25ba6c9",
+      "delta.rowTracking.materializedRowIdColumnName": "_row-id-col-046c2a52-0e0a-4f01-8ee2-7c0c834f89b6",
+      "io.unitycatalog.tableId": "f8cd564b-585d-4b64-8831-c9724391d2e2"
+    }
+  },
+  "row_filters": {},
+  "schema_id": "b559d8f7-1206-4f50-80d7-eb2d3e258f22",
+  "schema_name": "blueprint_demo",
+  "securable_kind": "TABLE_DB_STORAGE",
+  "securable_type": "TABLE",
+  "storage_location": "s3://dbstorage-prod-hpo91wnqst/uc/a484b8ca-0893-4fb9-a142-ab251c64e15c/63d14e6f-0089-46ea-a40c-d0882b28e341/__unitystorage/catalogs/2c81ee21-dbba-4fff-93e8-3883c73f6650/tables/f8cd564b-585d-4b64-8831-c9724391d2e2",
+  "table_id": "f8cd564b-585d-4b64-8831-c9724391d2e2",
+  "table_type": "MANAGED",
+  "updated_at": 1791993340555,
+  "updated_by": "lawsuser4@gmail.com"
+}

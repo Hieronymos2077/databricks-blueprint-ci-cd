@@ -1,0 +1,20 @@
+[
+  {
+    "catalog_name": "workspace",
+    "created_at": 1791894963620,
+    "created_by": "lawsuser4@gmail.com",
+    "etag": "CAESCAAAAaE1Q0tq",
+    "id": "64e1c055-4cbb-4df0-80a9-cb4b51c0a7a2",
+    "metastore_id": "63d14e6f-0089-46ea-a40c-d0882b28e341",
+    "model_name": "churn_model",
+    "run_id": "a7f9a3ce9ad043a492c1fccd801984ef",
+    "run_workspace_id": 7474660191855131,
+    "schema_name": "blueprint_demo",
+    "source": "dbfs:/databricks/mlflow-tracking/2817437476331785/a7f9a3ce9ad043a492c1fccd801984ef/artifacts/model",
+    "status": "READY",
+    "storage_location": "s3://dbstorage-prod-hpo91wnqst/uc/a484b8ca-0893-4fb9-a142-ab251c64e15c/63d14e6f-0089-46ea-a40c-d0882b28e341/__unitystorage/catalogs/2c81ee21-dbba-4fff-93e8-3883c73f6650/models/9bf00194-fc40-4eef-b4f5-c713ee5f0e94/versions/64e1c055-4cbb-4df0-80a9-cb4b51c0a7a2",
+    "updated_at": 1791894965098,
+    "updated_by": "lawsuser4@gmail.com",
+    "version": 1
+  }
+]

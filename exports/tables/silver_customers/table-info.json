@@ -1,0 +1,125 @@
+{
+  "browse_only": false,
+  "cache_version_info": {
+    "metastore_version": -1
+  },
+  "catalog_id": "2c81ee21-dbba-4fff-93e8-3883c73f6650",
+  "catalog_name": "workspace",
+  "columns": [
+    {
+      "column_masks": {},
+      "name": "customer_id",
+      "nullable": true,
+      "position": 0,
+      "type_json": "{\"name\":\"customer_id\",\"type\":\"long\",\"nullable\":true,\"metadata\":{}}",
+      "type_name": "LONG",
+      "type_precision": 0,
+      "type_scale": 0,
+      "type_text": "bigint"
+    },
+    {
+      "column_masks": {},
+      "name": "tenure_months",
+      "nullable": true,
+      "position": 1,
+      "type_json": "{\"name\":\"tenure_months\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}}",
+      "type_name": "INT",
+      "type_precision": 0,
+      "type_scale": 0,
+      "type_text": "int"
+    },
+    {
+      "column_masks": {},
+      "name": "usage_score",
+      "nullable": true,
+      "position": 2,
+      "type_json": "{\"name\":\"usage_score\",\"type\":\"double\",\"nullable\":true,\"metadata\":{}}",
+      "type_name": "DOUBLE",
+      "type_precision": 0,
+      "type_scale": 0,
+      "type_text": "double"
+    },
+    {
+      "column_masks": {},
+      "name": "support_tickets",
+      "nullable": true,
+      "position": 3,
+      "type_json": "{\"name\":\"support_tickets\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}}",
+      "type_name": "INT",
+      "type_precision": 0,
+      "type_scale": 0,
+      "type_text": "int"
+    },
+    {
+      "column_masks": {},
+      "name": "churn",
+      "nullable": true,
+      "position": 4,
+      "type_json": "{\"name\":\"churn\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}}",
+      "type_name": "INT",
+      "type_precision": 0,
+      "type_scale": 0,
+      "type_text": "int"
+    }
+  ],
+  "created_at": 1791894516618,
+  "created_by": "lawsuser4@gmail.com",
+  "data_access_configuration_id": "00000000-0000-0000-0000-000000000000",
+  "data_source_format": "DELTA",
+  "delta_runtime_properties_kvpairs": {},
+  "effective_auto_maintenance_flag": {
+    "value": "DISABLE"
+  },
+  "effective_predictive_optimization_flag": {
+    "value": "DISABLE"
+  },
+  "enable_auto_maintenance": "DISABLE",
+  "enable_predictive_optimization": "DISABLE",
+  "etag": "CAESCAAAAaE1QokC",
+  "full_name": "workspace.blueprint_demo.silver_customers",
+  "generation": 1,
+  "metastore_id": "63d14e6f-0089-46ea-a40c-d0882b28e341",
+  "metastore_version": -1,
+  "name": "silver_customers",
+  "owner": "lawsuser4@gmail.com",
+  "properties": {
+    "delta.enableDeletionVectors": "true",
+    "delta.feature.appendOnly": "supported",
+    "delta.feature.deletionVectors": "supported",
+    "delta.feature.invariants": "supported",
+    "delta.lastCommitTimestamp": "1791894517000",
+    "delta.lastUpdateVersion": "0",
+    "delta.minReaderVersion": "3",
+    "delta.minWriterVersion": "7",
+    "delta.parquet.compression.codec": "zstd",
+    "delta.parquet.format.version": "2.12.0",
+    "delta.parquet.format.version.afe.internal": "2.12.0",
+    "io.unitycatalog.tableId": "d5155f74-aa27-41dc-822e-8af57c93cbbc"
+  },
+  "properties_pairs": {
+    "properties": {
+      "delta.enableDeletionVectors": "true",
+      "delta.feature.appendOnly": "supported",
+      "delta.feature.deletionVectors": "supported",
+      "delta.feature.invariants": "supported",
+      "delta.lastCommitTimestamp": "1791894517000",
+      "delta.lastUpdateVersion": "0",
+      "delta.minReaderVersion": "3",
+      "delta.minWriterVersion": "7",
+      "delta.parquet.compression.codec": "zstd",
+      "delta.parquet.format.version": "2.12.0",
+      "delta.parquet.format.version.afe.internal": "2.12.0",
+      "io.unitycatalog.tableId": "d5155f74-aa27-41dc-822e-8af57c93cbbc"
+    }
+  },
+  "row_filters": {},
+  "schema_id": "b559d8f7-1206-4f50-80d7-eb2d3e258f22",
+  "schema_name": "blueprint_demo",
+  "securable_kind": "TABLE_DB_STORAGE",
+  "securable_type": "TABLE",
+  "storage_location": "s3://dbstorage-prod-hpo91wnqst/uc/a484b8ca-0893-4fb9-a142-ab251c64e15c/63d14e6f-0089-46ea-a40c-d0882b28e341/__unitystorage/catalogs/2c81ee21-dbba-4fff-93e8-3883c73f6650/tables/d5155f74-aa27-41dc-822e-8af57c93cbbc",
+  "table_id": "d5155f74-aa27-41dc-822e-8af57c93cbbc",
+  "table_type": "MANAGED",
+  "updated_at": 1791894915330,
+  "updated_by": "lawsuser4@gmail.com"
+}

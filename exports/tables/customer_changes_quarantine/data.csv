@@ -1,0 +1,2 @@
+change_id,customer_id,tenure_months,usage_score,support_tickets,op,event_ts,batch_no,reason
+b001-0028,184,-1,10.0,1,U,2026-10-02T00:06:40Z,1,failed range or operation check

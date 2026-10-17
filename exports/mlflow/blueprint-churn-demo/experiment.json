@@ -1,0 +1,30 @@
+{
+  "artifact_location": "dbfs:/databricks/mlflow-tracking/2817437476331785",
+  "creation_time": 1791894944277,
+  "experiment_id": "2817437476331785",
+  "last_update_time": 1791894952206,
+  "lifecycle_stage": "active",
+  "name": "/Users/lawsuser4@gmail.com/blueprint-churn-demo",
+  "tags": [
+    {
+      "key": "mlflow.ownerId",
+      "value": "75682518775965"
+    },
+    {
+      "key": "mlflow.experiment.sourceName",
+      "value": "/Users/lawsuser4@gmail.com/blueprint-churn-demo"
+    },
+    {
+      "key": "mlflow.ownerId",
+      "value": "75682518775965"
+    },
+    {
+      "key": "mlflow.ownerEmail",
+      "value": "lawsuser4@gmail.com"
+    },
+    {
+      "key": "mlflow.experimentType",
+      "value": "MLFLOW_EXPERIMENT"
+    }
+  ]
+}

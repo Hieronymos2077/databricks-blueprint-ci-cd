@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "config": {
+    "bundle": {
+      "name": "data-platform-blueprint-demo",
+      "target": "dev",
+      "mode": "development",
+      "git": {
+        "branch": "main",
+        "commit": "6cbfbfc908a1ae51af974318f6afcaf019bd20ed",
+        "bundle_root_path": "infrastructure/databricks/asset-bundles"
+      }
+    },
+    "workspace": {
+      "file_path": "/Workspace/Users/lawsuser4@gmail.com/.bundle/data-platform-blueprint-demo/dev/files"
+    },
+    "resources": {
+      "jobs": {
+        "drift_monitor": {
+          "id": "948924464555049",
+          "relative_path": "databricks.yml"
+        },
+        "ml_pipeline": {
+          "id": "789648897090823",
+          "relative_path": "databricks.yml"
+        },
+        "platform_pipeline": {
+          "id": "106481472574404",
+          "relative_path": "databricks.yml"
+        }
+      }
+    },
+    "presets": {
+      "source_linked_deployment": false
+    }
+  },
+  "extra": {}
+}

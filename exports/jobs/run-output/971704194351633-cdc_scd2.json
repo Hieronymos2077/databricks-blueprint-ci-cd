@@ -1,0 +1,4 @@
+{
+  "logs": "{\"applied_batches\": [1], \"cdc_applied_batch\": 1, \"current_rows\": 503, \"quarantined_rows\": 1, \"scd2_closed_rows\": 22, \"scd2_current_rows\": 503, \"scd2_rows\": 525, \"scd2_versions_applied\": [1, 2], \"step\": \"cdc\"}\n",
+  "logs_truncated": false
+}

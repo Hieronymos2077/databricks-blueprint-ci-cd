@@ -1,0 +1,151 @@
+{
+  "created_time": 1791993226455,
+  "creator_user_name": "lawsuser4@gmail.com",
+  "job_id": 106481472574404,
+  "run_as_owner": true,
+  "run_as_user_name": "lawsuser4@gmail.com",
+  "settings": {
+    "deployment": {
+      "kind": "BUNDLE",
+      "metadata_file_path": "/Workspace/Users/lawsuser4@gmail.com/.bundle/data-platform-blueprint-demo/dev/state/metadata.json"
+    },
+    "edit_mode": "UI_LOCKED",
+    "email_notifications": {},
+    "environments": [
+      {
+        "environment_key": "demo",
+        "spec": {
+          "dependencies": [
+            "databricks-feature-engineering==0.18.1"
+          ],
+          "environment_version": "4"
+        }
+      }
+    ],
+    "format": "MULTI_TASK",
+    "max_concurrent_runs": 1,
+    "name": "[dev lawsuser4] data-platform-blueprint-demo-platform-pipeline",
+    "queue": {
+      "enabled": false
+    },
+    "schedule": {
+      "pause_status": "PAUSED",
+      "quartz_cron_expression": "0 0 6 * * ?",
+      "timezone_id": "UTC"
+    },
+    "tags": {
+      "dev": "lawsuser4"
+    },
+    "tasks": [
+      {
+        "depends_on": [
+          {
+            "task_key": "cdc_scd2"
+          }
+        ],
+        "disable_auto_optimization": true,
+        "disabled": false,
+        "email_notifications": {},
+        "environment_key": "demo",
+        "max_retries": 0,
+        "min_retry_interval_millis": 0,
+        "retry_on_timeout": false,
+        "run_if": "ALL_SUCCESS",
+        "spark_python_task": {
+          "parameters": [
+            "--step",
+            "score",
+            "--catalog",
+            "workspace",
+            "--schema",
+            "blueprint_demo",
+            "--expected-host",
+            "https://dbc-939dcb75-eac7.cloud.databricks.com",
+            "--expected-operator",
+            "lawsuser4@gmail.com",
+            "--run-id",
+            "{{job.run_id}}",
+            "--fixture-source",
+            "/Workspace/Users/lawsuser4@gmail.com/.bundle/data-platform-blueprint-demo/dev/files/databricks/src/feature_store/ingestion/prepare_demo.py",
+            "--model-version",
+            "1",
+            "--receipt-path",
+            "/Workspace/Users/lawsuser4@gmail.com/.bundle/data-platform-blueprint-demo/dev/runtime/platform-receipts/{{job.run_id}}.json"
+          ],
+          "python_file": "/Workspace/Users/lawsuser4@gmail.com/.bundle/data-platform-blueprint-demo/dev/files/databricks/src/de_patterns/platform_pipeline.py"
+        },
+        "task_key": "batch_score",
+        "timeout_seconds": 480
+      },
+      {
+        "depends_on": [
+          {
+            "task_key": "ingest_changes"
+          }
+        ],
+        "disable_auto_optimization": true,
+        "disabled": false,
+        "email_notifications": {},
+        "environment_key": "demo",
+        "max_retries": 0,
+        "min_retry_interval_millis": 0,
+        "retry_on_timeout": false,
+        "run_if": "ALL_SUCCESS",
+        "spark_python_task": {
+          "parameters": [
+            "--step",
+            "cdc",
+            "--catalog",
+            "workspace",
+            "--schema",
+            "blueprint_demo",
+            "--expected-host",
+            "https://dbc-939dcb75-eac7.cloud.databricks.com",
+            "--expected-operator",
+            "lawsuser4@gmail.com",
+            "--run-id",
+            "{{job.run_id}}",
+            "--fixture-source",
+            "/Workspace/Users/lawsuser4@gmail.com/.bundle/data-platform-blueprint-demo/dev/files/databricks/src/feature_store/ingestion/prepare_demo.py"
+          ],
+          "python_file": "/Workspace/Users/lawsuser4@gmail.com/.bundle/data-platform-blueprint-demo/dev/files/databricks/src/de_patterns/platform_pipeline.py"
+        },
+        "task_key": "cdc_scd2",
+        "timeout_seconds": 480
+      },
+      {
+        "disable_auto_optimization": true,
+        "disabled": false,
+        "email_notifications": {},
+        "environment_key": "demo",
+        "max_retries": 0,
+        "min_retry_interval_millis": 0,
+        "retry_on_timeout": false,
+        "run_if": "ALL_SUCCESS",
+        "spark_python_task": {
+          "parameters": [
+            "--step",
+            "ingest",
+            "--catalog",
+            "workspace",
+            "--schema",
+            "blueprint_demo",
+            "--expected-host",
+            "https://dbc-939dcb75-eac7.cloud.databricks.com",
+            "--expected-operator",
+            "lawsuser4@gmail.com",
+            "--run-id",
+            "{{job.run_id}}",
+            "--fixture-source",
+            "/Workspace/Users/lawsuser4@gmail.com/.bundle/data-platform-blueprint-demo/dev/files/databricks/src/feature_store/ingestion/prepare_demo.py"
+          ],
+          "python_file": "/Workspace/Users/lawsuser4@gmail.com/.bundle/data-platform-blueprint-demo/dev/files/databricks/src/de_patterns/platform_pipeline.py"
+        },
+        "task_key": "ingest_changes",
+        "timeout_seconds": 480
+      }
+    ],
+    "timeout_seconds": 900,
+    "webhook_notifications": {}
+  }
+}

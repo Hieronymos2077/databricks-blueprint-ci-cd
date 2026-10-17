@@ -1,0 +1,17 @@
+{
+  "bronze_customers": 500,
+  "churn_predictions": 503,
+  "customer_changes_quarantine": 1,
+  "customer_features": 500,
+  "customers_current": 503,
+  "customers_scd2": 525,
+  "drift_alerts": 0,
+  "drift_baselines": 1,
+  "drift_metrics": 10,
+  "gold_label_counts": 2,
+  "labels": 500,
+  "platform_batches": 1,
+  "platform_watermarks": 3,
+  "raw_customer_changes": 29,
+  "silver_customers": 500
+}

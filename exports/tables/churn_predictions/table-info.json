@@ -1,0 +1,137 @@
+{
+  "browse_only": false,
+  "cache_version_info": {
+    "metastore_version": -1
+  },
+  "catalog_id": "2c81ee21-dbba-4fff-93e8-3883c73f6650",
+  "catalog_name": "workspace",
+  "columns": [
+    {
+      "column_masks": {},
+      "name": "customer_id",
+      "nullable": true,
+      "position": 0,
+      "type_json": "{\"name\":\"customer_id\",\"type\":\"long\",\"nullable\":true,\"metadata\":{}}",
+      "type_name": "LONG",
+      "type_precision": 0,
+      "type_scale": 0,
+      "type_text": "bigint"
+    },
+    {
+      "column_masks": {},
+      "name": "prediction",
+      "nullable": true,
+      "position": 1,
+      "type_json": "{\"name\":\"prediction\",\"type\":\"double\",\"nullable\":true,\"metadata\":{}}",
+      "type_name": "DOUBLE",
+      "type_precision": 0,
+      "type_scale": 0,
+      "type_text": "double"
+    },
+    {
+      "column_masks": {},
+      "name": "scoring_run_id",
+      "nullable": true,
+      "position": 2,
+      "type_json": "{\"name\":\"scoring_run_id\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}}",
+      "type_name": "STRING",
+      "type_precision": 0,
+      "type_scale": 0,
+      "type_text": "string"
+    },
+    {
+      "column_masks": {},
+      "name": "model_uri",
+      "nullable": true,
+      "position": 3,
+      "type_json": "{\"name\":\"model_uri\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}}",
+      "type_name": "STRING",
+      "type_precision": 0,
+      "type_scale": 0,
+      "type_text": "string"
+    },
+    {
+      "column_masks": {},
+      "name": "scored_at",
+      "nullable": true,
+      "position": 4,
+      "type_json": "{\"name\":\"scored_at\",\"type\":\"timestamp\",\"nullable\":true,\"metadata\":{}}",
+      "type_name": "TIMESTAMP",
+      "type_precision": 0,
+      "type_scale": 0,
+      "type_text": "timestamp"
+    }
+  ],
+  "created_at": 1791993540665,
+  "created_by": "lawsuser4@gmail.com",
+  "data_access_configuration_id": "00000000-0000-0000-0000-000000000000",
+  "data_source_format": "DELTA",
+  "delta_runtime_properties_kvpairs": {},
+  "effective_auto_maintenance_flag": {
+    "value": "DISABLE"
+  },
+  "effective_predictive_optimization_flag": {
+    "value": "DISABLE"
+  },
+  "enable_auto_maintenance": "DISABLE",
+  "enable_predictive_optimization": "DISABLE",
+  "etag": "CAESCAAAAaE7I3N5",
+  "full_name": "workspace.blueprint_demo.churn_predictions",
+  "generation": 1,
+  "metastore_id": "63d14e6f-0089-46ea-a40c-d0882b28e341",
+  "metastore_version": -1,
+  "name": "churn_predictions",
+  "owner": "lawsuser4@gmail.com",
+  "properties": {
+    "blueprint.component": "blueprint-platform-v1",
+    "delta.enableDeletionVectors": "true",
+    "delta.enableRowTracking": "true",
+    "delta.feature.appendOnly": "supported",
+    "delta.feature.deletionVectors": "supported",
+    "delta.feature.domainMetadata": "supported",
+    "delta.feature.invariants": "supported",
+    "delta.feature.rowTracking": "supported",
+    "delta.lastCommitTimestamp": "1791993541000",
+    "delta.lastUpdateVersion": "0",
+    "delta.minReaderVersion": "3",
+    "delta.minWriterVersion": "7",
+    "delta.parquet.compression.codec": "zstd",
+    "delta.parquet.format.version": "2.12.0",
+    "delta.parquet.format.version.afe.internal": "2.12.0",
+    "delta.rowTracking.materializedRowCommitVersionColumnName": "_row-commit-version-col-53ede903-9a61-44f3-bc5b-d018a1558d68",
+    "delta.rowTracking.materializedRowIdColumnName": "_row-id-col-61c170af-cf95-47eb-9780-99b439eb1a4e",
+    "io.unitycatalog.tableId": "5782a26c-5dc9-44ae-af30-f842502b9517"
+  },
+  "properties_pairs": {
+    "properties": {
+      "blueprint.component": "blueprint-platform-v1",
+      "delta.enableDeletionVectors": "true",
+      "delta.enableRowTracking": "true",
+      "delta.feature.appendOnly": "supported",
+      "delta.feature.deletionVectors": "supported",
+      "delta.feature.domainMetadata": "supported",
+      "delta.feature.invariants": "supported",
+      "delta.feature.rowTracking": "supported",
+      "delta.lastCommitTimestamp": "1791993541000",
+      "delta.lastUpdateVersion": "0",
+      "delta.minReaderVersion": "3",
+      "delta.minWriterVersion": "7",
+      "delta.parquet.compression.codec": "zstd",
+      "delta.parquet.format.version": "2.12.0",
+      "delta.parquet.format.version.afe.internal": "2.12.0",
+      "delta.rowTracking.materializedRowCommitVersionColumnName": "_row-commit-version-col-53ede903-9a61-44f3-bc5b-d018a1558d68",
+      "delta.rowTracking.materializedRowIdColumnName": "_row-id-col-61c170af-cf95-47eb-9780-99b439eb1a4e",
+      "io.unitycatalog.tableId": "5782a26c-5dc9-44ae-af30-f842502b9517"
+    }
+  },
+  "row_filters": {},
+  "schema_id": "b559d8f7-1206-4f50-80d7-eb2d3e258f22",
+  "schema_name": "blueprint_demo",
+  "securable_kind": "TABLE_DB_STORAGE",
+  "securable_type": "TABLE",
+  "storage_location": "s3://dbstorage-prod-hpo91wnqst/uc/a484b8ca-0893-4fb9-a142-ab251c64e15c/63d14e6f-0089-46ea-a40c-d0882b28e341/__unitystorage/catalogs/2c81ee21-dbba-4fff-93e8-3883c73f6650/tables/5782a26c-5dc9-44ae-af30-f842502b9517",
+  "table_id": "5782a26c-5dc9-44ae-af30-f842502b9517",
+  "table_type": "MANAGED",
+  "updated_at": 1791993541497,
+  "updated_by": "lawsuser4@gmail.com"
+}

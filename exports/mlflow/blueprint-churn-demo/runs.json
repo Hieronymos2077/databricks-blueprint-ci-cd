@@ -1,0 +1,139 @@
+[
+  {
+    "data": {
+      "metrics": [
+        {
+          "key": "accuracy",
+          "step": 0,
+          "timestamp": 1791894952719,
+          "value": 0.93
+        },
+        {
+          "key": "f1",
+          "step": 0,
+          "timestamp": 1791894952719,
+          "value": 0.5882352941176471
+        },
+        {
+          "key": "roc_auc",
+          "step": 0,
+          "timestamp": 1791894952719,
+          "value": 0.9743589743589743
+        }
+      ],
+      "params": [
+        {
+          "key": "fixture",
+          "value": "synthetic_churn_500"
+        },
+        {
+          "key": "holdout_rows",
+          "value": "100"
+        },
+        {
+          "key": "random_seed",
+          "value": "42"
+        },
+        {
+          "key": "train_rows",
+          "value": "400"
+        }
+      ],
+      "tags": [
+        {
+          "key": "mlflow.databricks.workspaceURL",
+          "value": "https://dbc-939dcb75-eac7.cloud.databricks.com"
+        },
+        {
+          "key": "upstream_commit",
+          "value": "029a1c20fc666590a0fd93182bb71bf4a583b548"
+        },
+        {
+          "key": "registration_verified",
+          "value": "true"
+        },
+        {
+          "key": "purpose",
+          "value": "deployment_smoke"
+        },
+        {
+          "key": "mlflow.user",
+          "value": "lawsuser4@gmail.com"
+        },
+        {
+          "key": "mlflow.source.type",
+          "value": "JOB"
+        },
+        {
+          "key": "mlflow.source.name",
+          "value": "jobs/789648897090823/run/1014698285327962"
+        },
+        {
+          "key": "mlflow.runName",
+          "value": "sincere-midge-66"
+        },
+        {
+          "key": "mlflow.runColor",
+          "value": "#5387dd"
+        },
+        {
+          "key": "mlflow.log-model.history",
+          "value": "[{\"artifact_path\":\"model\",\"flavors\":{\"python_function\":{\"data\":\"data/feature_store\",\"code\":null,\"loader_module\":\"databricks.feature_store.mlflow_model\",\"streamable\":false,\"env\":{\"conda\":\"conda.yaml\",\"virtualenv\":\"python_env.yaml\"},\"python_version\":\"3.12.3\"}},\"utc_time_created\":\"2026-10-13 12:36:00.118056\"}]"
+        },
+        {
+          "key": "data_sha256",
+          "value": "85d4220b98b7dae789849ed4440d6a0c1f209df574785b8ede0b55861d2b59a9"
+        },
+        {
+          "key": "mlflow.databricks.workspaceID",
+          "value": "7474660191855131"
+        },
+        {
+          "key": "mlflow.databricks.webappURL",
+          "value": "https://dbc-939dcb75-eac7.cloud.databricks.com"
+        },
+        {
+          "key": "mlflow.databricks.notebook.commandID",
+          "value": "1001791894748956_7892576686808556523_org-7474660191855131-job-789648897090823-run-1014698285327962-action-1833934051104744"
+        },
+        {
+          "key": "mlflow.databricks.jobType",
+          "value": "python"
+        },
+        {
+          "key": "mlflow.databricks.jobRunID",
+          "value": "1014698285327962"
+        },
+        {
+          "key": "mlflow.databricks.jobID",
+          "value": "789648897090823"
+        },
+        {
+          "key": "mlflow.databricks.cluster.libraries",
+          "value": "{\"installable\":[],\"redacted\":[]}"
+        },
+        {
+          "key": "mlflow.databricks.cluster.info",
+          "value": "{\"cluster_name\":\"\",\"spark_version\":\"client.4.10-scala2.13\",\"autotermination_minutes\":120}"
+        },
+        {
+          "key": "mlflow.databricks.cluster.id",
+          "value": "1013-123359-xy6taahq-v2n"
+        }
+      ]
+    },
+    "info": {
+      "artifact_uri": "dbfs:/databricks/mlflow-tracking/2817437476331785/a7f9a3ce9ad043a492c1fccd801984ef/artifacts",
+      "end_time": 1791894965605,
+      "experiment_id": "2817437476331785",
+      "lifecycle_stage": "active",
+      "run_id": "a7f9a3ce9ad043a492c1fccd801984ef",
+      "run_name": "sincere-midge-66",
+      "run_uuid": "a7f9a3ce9ad043a492c1fccd801984ef",
+      "start_time": 1791894952206,
+      "status": "FINISHED"
+    },
+    "inputs": {},
+    "outputs": {}
+  }
+]

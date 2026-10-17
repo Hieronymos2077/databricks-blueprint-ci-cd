@@ -1,0 +1,32 @@
+{
+  "checks": {
+    "cloud_schedules": false,
+    "declared_jobs": [
+      "ml_pipeline",
+      "drift_monitor"
+    ],
+    "focused_checks": "passed",
+    "python_syntax": true,
+    "test_output": ""
+  },
+  "cloud_schedule": false,
+  "commit": "79714e8e691e6ccc5c8e8cf491f9247f8d5e67ca",
+  "drift_job_id": 948924464555049,
+  "failed_at": "2026-10-14T13:46:12.502260+00:00",
+  "host": "https://dbc-939dcb75-eac7.cloud.databricks.com",
+  "idempotency_token": "93f71839a6164797f08ef452eba837c16af07956c5f019ee18f0aa78de387aac",
+  "last_error": "Drift smoke run did not succeed; inspect the native job run",
+  "pid": 31324,
+  "result_state": "FAILED",
+  "role": "Blueprint-Local-Git-CI",
+  "run_id": 708151094398630,
+  "run_state": {
+    "life_cycle_state": "INTERNAL_ERROR",
+    "result_state": "FAILED",
+    "state_message": "Task drift_monitor failed with message: Workload failed, see run output for details.",
+    "user_cancelled_or_timedout": false
+  },
+  "source": "C:\\Users\\arete\\Documents\\Codex\\2026-10-12\\blueprint-deployment\\outputs\\databricks-blueprint-ci-monitoring",
+  "started_at": "2026-10-14T13:45:05.041641+00:00",
+  "state": "smoke_failed"
+}

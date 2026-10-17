@@ -1,0 +1,92 @@
+{
+  "created_time": 1791893984354,
+  "creator_user_name": "lawsuser4@gmail.com",
+  "job_id": 789648897090823,
+  "run_as_owner": true,
+  "run_as_user_name": "lawsuser4@gmail.com",
+  "settings": {
+    "deployment": {
+      "kind": "BUNDLE",
+      "metadata_file_path": "/Workspace/Users/lawsuser4@gmail.com/.bundle/data-platform-blueprint-demo/dev/state/metadata.json"
+    },
+    "edit_mode": "UI_LOCKED",
+    "email_notifications": {},
+    "environments": [
+      {
+        "environment_key": "demo",
+        "spec": {
+          "dependencies": [
+            "databricks-feature-engineering==0.18.1"
+          ],
+          "environment_version": "4"
+        }
+      }
+    ],
+    "format": "MULTI_TASK",
+    "max_concurrent_runs": 1,
+    "name": "[dev lawsuser4] data-platform-blueprint-demo-ml-pipeline",
+    "queue": {
+      "enabled": false
+    },
+    "tags": {
+      "dev": "lawsuser4"
+    },
+    "tasks": [
+      {
+        "disable_auto_optimization": true,
+        "disabled": false,
+        "email_notifications": {},
+        "environment_key": "demo",
+        "max_retries": 0,
+        "min_retry_interval_millis": 0,
+        "retry_on_timeout": false,
+        "run_if": "ALL_SUCCESS",
+        "spark_python_task": {
+          "parameters": [
+            "--catalog",
+            "workspace",
+            "--schema",
+            "blueprint_demo",
+            "--expected-host",
+            "https://dbc-939dcb75-eac7.cloud.databricks.com"
+          ],
+          "python_file": "/Workspace/Users/lawsuser4@gmail.com/.bundle/data-platform-blueprint-demo/dev/files/databricks/src/feature_store/ingestion/prepare_demo.py"
+        },
+        "task_key": "prepare_features",
+        "timeout_seconds": 300
+      },
+      {
+        "depends_on": [
+          {
+            "task_key": "prepare_features"
+          }
+        ],
+        "disable_auto_optimization": true,
+        "disabled": false,
+        "email_notifications": {},
+        "environment_key": "demo",
+        "max_retries": 0,
+        "min_retry_interval_millis": 0,
+        "retry_on_timeout": false,
+        "run_if": "ALL_SUCCESS",
+        "spark_python_task": {
+          "parameters": [
+            "--catalog",
+            "workspace",
+            "--schema",
+            "blueprint_demo",
+            "--expected-host",
+            "https://dbc-939dcb75-eac7.cloud.databricks.com",
+            "--experiment",
+            "/Users/lawsuser4@gmail.com/blueprint-churn-demo"
+          ],
+          "python_file": "/Workspace/Users/lawsuser4@gmail.com/.bundle/data-platform-blueprint-demo/dev/files/databricks/src/mlops/training/training_pipeline.py"
+        },
+        "task_key": "train_and_register",
+        "timeout_seconds": 300
+      }
+    ],
+    "timeout_seconds": 900,
+    "webhook_notifications": {}
+  }
+}

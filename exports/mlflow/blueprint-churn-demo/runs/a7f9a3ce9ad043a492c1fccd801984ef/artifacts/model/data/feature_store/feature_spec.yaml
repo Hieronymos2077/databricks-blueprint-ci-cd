@@ -1,0 +1,36 @@
+input_columns:
+- customer_id:
+    data_type: bigint
+    include: false
+    topological_ordering: 0
+    source: training_data
+- tenure_months:
+    table_name: workspace.blueprint_demo.customer_features
+    feature_name: tenure_months
+    lookup_key:
+    - customer_id
+    data_type: int
+    topological_ordering: 2
+    source: feature_store
+- usage_score:
+    table_name: workspace.blueprint_demo.customer_features
+    feature_name: usage_score
+    lookup_key:
+    - customer_id
+    data_type: double
+    topological_ordering: 3
+    source: feature_store
+- support_tickets:
+    table_name: workspace.blueprint_demo.customer_features
+    feature_name: support_tickets
+    lookup_key:
+    - customer_id
+    data_type: int
+    topological_ordering: 1
+    source: feature_store
+workspace_id: '7474660191855131'
+feature_store_client_version: 0.18.1
+input_tables:
+- workspace.blueprint_demo.customer_features:
+    table_id: c2fe1a49-bab8-4be0-9f13-c56a65da85e1
+serialization_version: 9

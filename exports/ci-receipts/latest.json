@@ -1,0 +1,223 @@
+{
+  "checks": {
+    "cloud_schedules": false,
+    "declared_jobs": [
+      "ml_pipeline",
+      "drift_monitor",
+      "platform_pipeline"
+    ],
+    "focused_checks": "passed",
+    "paused_schedules": [
+      "platform_pipeline"
+    ],
+    "python_syntax": true,
+    "test_output": ""
+  },
+  "cloud_schedule": false,
+  "commit": "6cbfbfc908a1ae51af974318f6afcaf019bd20ed",
+  "drift_job_id": 948924464555049,
+  "drift_receipt": {
+    "alert_fields": [],
+    "batch_id": "646426876189293",
+    "current_rows": 500,
+    "metrics": {
+      "churn": {
+        "current_missing_rate": 0.0,
+        "current_rows": 500,
+        "psi": 0.0,
+        "reference_missing_rate": 0.0,
+        "status": "OK"
+      },
+      "prediction": {
+        "current_missing_rate": 0.0,
+        "current_rows": 500,
+        "psi": 0.0,
+        "reference_missing_rate": 0.0,
+        "status": "OK"
+      },
+      "support_tickets": {
+        "current_missing_rate": 0.0,
+        "current_rows": 500,
+        "psi": 0.0,
+        "reference_missing_rate": 0.0,
+        "status": "OK"
+      },
+      "tenure_months": {
+        "current_missing_rate": 0.0,
+        "current_rows": 500,
+        "psi": 0.0,
+        "reference_missing_rate": 0.0,
+        "status": "OK"
+      },
+      "usage_score": {
+        "current_missing_rate": 0.0,
+        "current_rows": 500,
+        "psi": 0.0,
+        "reference_missing_rate": 0.0,
+        "status": "OK"
+      }
+    },
+    "model_uri": "models:/workspace.blueprint_demo.churn_model/1",
+    "monitoring_mlflow_run_id": "efce49a1cc0b42718949002945e4b263",
+    "reference_data_sha256": "85d4220b98b7dae789849ed4440d6a0c1f209df574785b8ede0b55861d2b59a9",
+    "reference_rows": 500,
+    "self_test": {
+      "controls_passed": true,
+      "shifted_in_memory": {
+        "churn": {
+          "current_missing_rate": 0.0,
+          "current_rows": 500,
+          "psi": 0.0,
+          "reference_missing_rate": 0.0,
+          "status": "OK"
+        },
+        "prediction": {
+          "current_missing_rate": 0.0,
+          "current_rows": 500,
+          "psi": 0.41362916663821364,
+          "reference_missing_rate": 0.0,
+          "status": "DRIFT"
+        },
+        "support_tickets": {
+          "current_missing_rate": 0.0,
+          "current_rows": 500,
+          "psi": 5.773219760582542,
+          "reference_missing_rate": 0.0,
+          "status": "DRIFT"
+        },
+        "tenure_months": {
+          "current_missing_rate": 0.0,
+          "current_rows": 500,
+          "psi": 6.059604973096768,
+          "reference_missing_rate": 0.0,
+          "status": "DRIFT"
+        },
+        "usage_score": {
+          "current_missing_rate": 0.0,
+          "current_rows": 500,
+          "psi": 6.156316139983861,
+          "reference_missing_rate": 0.0,
+          "status": "DRIFT"
+        }
+      },
+      "source_tables_modified": false,
+      "unchanged_reference": {
+        "churn": {
+          "current_missing_rate": 0.0,
+          "current_rows": 500,
+          "psi": 0.0,
+          "reference_missing_rate": 0.0,
+          "status": "OK"
+        },
+        "prediction": {
+          "current_missing_rate": 0.0,
+          "current_rows": 500,
+          "psi": 0.0,
+          "reference_missing_rate": 0.0,
+          "status": "OK"
+        },
+        "support_tickets": {
+          "current_missing_rate": 0.0,
+          "current_rows": 500,
+          "psi": 0.0,
+          "reference_missing_rate": 0.0,
+          "status": "OK"
+        },
+        "tenure_months": {
+          "current_missing_rate": 0.0,
+          "current_rows": 500,
+          "psi": 0.0,
+          "reference_missing_rate": 0.0,
+          "status": "OK"
+        },
+        "usage_score": {
+          "current_missing_rate": 0.0,
+          "current_rows": 500,
+          "psi": 0.0,
+          "reference_missing_rate": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "source_tables_modified": false,
+    "tables": [
+      "workspace.blueprint_demo.drift_baselines",
+      "workspace.blueprint_demo.drift_metrics",
+      "workspace.blueprint_demo.drift_alerts"
+    ],
+    "threshold_psi": 0.2,
+    "training_run_id": "a7f9a3ce9ad043a492c1fccd801984ef"
+  },
+  "host": "https://dbc-939dcb75-eac7.cloud.databricks.com",
+  "idempotency_token": "7199c3b51833e78ddbacaa3876f8dd67f8c515ac80982c70f655f2f48551ce61",
+  "pid": 27500,
+  "platform_idempotency_token": "30af33304bda8d1f69600f66f2aab8978518fa92e845619ce29a87fbc1218c32",
+  "platform_job_id": 106481472574404,
+  "platform_receipt": {
+    "auto_loader_rows": 29,
+    "batch_no": 1,
+    "cdc_applied_batch": 1,
+    "changed_keys": 27,
+    "component": "blueprint-platform-v1",
+    "current_rows": 503,
+    "landed_rows": 29,
+    "model_uri": "models:/workspace.blueprint_demo.churn_model/1",
+    "original_table_sha256": {
+      "bronze_customers": "30b58701b7c5da050a0e1f1066a8175180db96485973a45f0b98c8251cd4f055",
+      "customer_features": "81c0300ee7512cfd8e2d999a9b7a3d03561e04137763f29b4c794e70c7025bda",
+      "gold_label_counts": "01cb294728250d51cc07eeae388f33e57bd96c29d6989c112081ecfcca28d1c9",
+      "labels": "83958cd74fdd63f7524e6f47beb50e5f5214ae6a712de1f146eb12552474269d",
+      "silver_customers": "30b58701b7c5da050a0e1f1066a8175180db96485973a45f0b98c8251cd4f055"
+    },
+    "predicted_churn": 44,
+    "predictions": 503,
+    "quarantined_rows": 1,
+    "run_id": "971704194351633",
+    "scd2_closed_rows": 22,
+    "scd2_current_rows": 503,
+    "scd2_rows": 525,
+    "scd2_source_version": 2,
+    "source_tables_modified": false,
+    "tables": [
+      "workspace.blueprint_demo.raw_customer_changes",
+      "workspace.blueprint_demo.customer_changes_quarantine",
+      "workspace.blueprint_demo.customers_current",
+      "workspace.blueprint_demo.customers_scd2",
+      "workspace.blueprint_demo.churn_predictions",
+      "workspace.blueprint_demo.platform_batches",
+      "workspace.blueprint_demo.platform_watermarks"
+    ],
+    "training_run_id": "a7f9a3ce9ad043a492c1fccd801984ef",
+    "valid_changes": 28
+  },
+  "platform_receipt_run_state": {
+    "life_cycle_state": "TERMINATED",
+    "result_state": "SUCCESS",
+    "state_message": "",
+    "user_cancelled_or_timedout": false
+  },
+  "platform_receipt_task_run_ids": {
+    "batch_score": 1003817897236973,
+    "cdc_scd2": 944647567202404,
+    "ingest_changes": 281665417889147
+  },
+  "platform_run_id": 971704194351633,
+  "platform_schedule": {
+    "pause_status": "PAUSED",
+    "quartz_cron_expression": "0 0 6 * * ?",
+    "timezone_id": "UTC"
+  },
+  "role": "Blueprint-Local-Git-CI",
+  "run_id": 646426876189293,
+  "run_state": {
+    "life_cycle_state": "TERMINATED",
+    "result_state": "SUCCESS",
+    "state_message": "",
+    "user_cancelled_or_timedout": false
+  },
+  "source": "C:\\Users\\arete\\Documents\\Codex\\2026-10-12\\blueprint-deployment\\outputs\\databricks-blueprint-ci-monitoring",
+  "started_at": "2026-10-14T15:53:33.653806+00:00",
+  "state": "verified",
+  "task_run_id": 820027141750829,
+  "verified_at": "2026-10-14T15:59:46.489359+00:00"
+}

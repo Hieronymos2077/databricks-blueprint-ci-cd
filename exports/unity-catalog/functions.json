@@ -1,0 +1,30 @@
+[
+  {
+    "cache_version_info": {
+      "metastore_version": -1
+    },
+    "catalog_name": "workspace",
+    "created_at": 1791894961389,
+    "created_by": "lawsuser4@gmail.com",
+    "data_type": "UNKNOWN_COLUMN_TYPE_NAME",
+    "etag": "CAESCAAAAaE1Q0t7",
+    "full_data_type": "UNKNOWN_COLUMN_TYPE_NAME",
+    "full_name": "workspace.blueprint_demo.churn_model",
+    "function_id": "9bf00194-fc40-4eef-b4f5-c713ee5f0e94",
+    "is_deterministic": false,
+    "metastore_id": "63d14e6f-0089-46ea-a40c-d0882b28e341",
+    "name": "churn_model",
+    "owner": "lawsuser4@gmail.com",
+    "parameter_style": "S",
+    "routine_body": "UNKNOWN_ROUTINE_BODY",
+    "routine_definition": "",
+    "schema_name": "blueprint_demo",
+    "securable_kind": "FUNCTION_REGISTERED_MODEL_DB_STORAGE",
+    "securable_type": "FUNCTION",
+    "security_type": "DEFINER",
+    "specific_name": "churn_model",
+    "sql_data_access": "NO_SQL",
+    "updated_at": 1791894965115,
+    "updated_by": "lawsuser4@gmail.com"
+  }
+]

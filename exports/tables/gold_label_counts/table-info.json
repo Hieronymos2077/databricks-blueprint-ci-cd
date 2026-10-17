@@ -1,0 +1,92 @@
+{
+  "browse_only": false,
+  "cache_version_info": {
+    "metastore_version": -1
+  },
+  "catalog_id": "2c81ee21-dbba-4fff-93e8-3883c73f6650",
+  "catalog_name": "workspace",
+  "columns": [
+    {
+      "column_masks": {},
+      "name": "churn",
+      "nullable": true,
+      "position": 0,
+      "type_json": "{\"name\":\"churn\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}}",
+      "type_name": "INT",
+      "type_precision": 0,
+      "type_scale": 0,
+      "type_text": "int"
+    },
+    {
+      "column_masks": {},
+      "name": "count",
+      "nullable": true,
+      "position": 1,
+      "type_json": "{\"name\":\"count\",\"type\":\"long\",\"nullable\":true,\"metadata\":{}}",
+      "type_name": "LONG",
+      "type_precision": 0,
+      "type_scale": 0,
+      "type_text": "bigint"
+    }
+  ],
+  "created_at": 1791894914264,
+  "created_by": "lawsuser4@gmail.com",
+  "data_access_configuration_id": "00000000-0000-0000-0000-000000000000",
+  "data_source_format": "DELTA",
+  "delta_runtime_properties_kvpairs": {},
+  "effective_auto_maintenance_flag": {
+    "value": "DISABLE"
+  },
+  "effective_predictive_optimization_flag": {
+    "value": "DISABLE"
+  },
+  "enable_auto_maintenance": "DISABLE",
+  "enable_predictive_optimization": "DISABLE",
+  "etag": "CAESCAAAAaE1Qo5M",
+  "full_name": "workspace.blueprint_demo.gold_label_counts",
+  "generation": 1,
+  "metastore_id": "63d14e6f-0089-46ea-a40c-d0882b28e341",
+  "metastore_version": -1,
+  "name": "gold_label_counts",
+  "owner": "lawsuser4@gmail.com",
+  "properties": {
+    "delta.enableDeletionVectors": "true",
+    "delta.feature.appendOnly": "supported",
+    "delta.feature.deletionVectors": "supported",
+    "delta.feature.invariants": "supported",
+    "delta.lastCommitTimestamp": "1791894914000",
+    "delta.lastUpdateVersion": "0",
+    "delta.minReaderVersion": "3",
+    "delta.minWriterVersion": "7",
+    "delta.parquet.compression.codec": "zstd",
+    "delta.parquet.format.version": "2.12.0",
+    "delta.parquet.format.version.afe.internal": "2.12.0",
+    "io.unitycatalog.tableId": "cce68aef-f3a6-445c-9026-285f7ff9b26f"
+  },
+  "properties_pairs": {
+    "properties": {
+      "delta.enableDeletionVectors": "true",
+      "delta.feature.appendOnly": "supported",
+      "delta.feature.deletionVectors": "supported",
+      "delta.feature.invariants": "supported",
+      "delta.lastCommitTimestamp": "1791894914000",
+      "delta.lastUpdateVersion": "0",
+      "delta.minReaderVersion": "3",
+      "delta.minWriterVersion": "7",
+      "delta.parquet.compression.codec": "zstd",
+      "delta.parquet.format.version": "2.12.0",
+      "delta.parquet.format.version.afe.internal": "2.12.0",
+      "io.unitycatalog.tableId": "cce68aef-f3a6-445c-9026-285f7ff9b26f"
+    }
+  },
+  "row_filters": {},
+  "schema_id": "b559d8f7-1206-4f50-80d7-eb2d3e258f22",
+  "schema_name": "blueprint_demo",
+  "securable_kind": "TABLE_DB_STORAGE",
+  "securable_type": "TABLE",
+  "storage_location": "s3://dbstorage-prod-hpo91wnqst/uc/a484b8ca-0893-4fb9-a142-ab251c64e15c/63d14e6f-0089-46ea-a40c-d0882b28e341/__unitystorage/catalogs/2c81ee21-dbba-4fff-93e8-3883c73f6650/tables/cce68aef-f3a6-445c-9026-285f7ff9b26f",
+  "table_id": "cce68aef-f3a6-445c-9026-285f7ff9b26f",
+  "table_type": "MANAGED",
+  "updated_at": 1791894916684,
+  "updated_by": "lawsuser4@gmail.com"
+}

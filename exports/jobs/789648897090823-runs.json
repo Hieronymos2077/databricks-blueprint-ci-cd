@@ -1,0 +1,398 @@
+[
+  {
+    "cleanup_duration": 0,
+    "creator_user_name": "lawsuser4@gmail.com",
+    "effective_performance_target": "PERFORMANCE_OPTIMIZED",
+    "end_time": 1791894969582,
+    "environments": [
+      {
+        "environment_key": "demo",
+        "spec": {
+          "dependencies": [
+            "databricks-feature-engineering==0.18.1"
+          ],
+          "environment_version": "4"
+        }
+      }
+    ],
+    "execution_duration": 0,
+    "format": "MULTI_TASK",
+    "job_id": 789648897090823,
+    "job_run_id": 984854810547896,
+    "number_in_job": 984854810547896,
+    "original_attempt_run_id": 984854810547896,
+    "run_duration": 130926,
+    "run_id": 984854810547896,
+    "run_name": "[dev lawsuser4] data-platform-blueprint-demo-ml-pipeline",
+    "run_page_url": "https://dbc-939dcb75-eac7.cloud.databricks.com/?o=7474660191855131#job/789648897090823/run/984854810547896",
+    "run_type": "JOB_RUN",
+    "setup_duration": 0,
+    "start_time": 1791894838656,
+    "state": {
+      "life_cycle_state": "TERMINATED",
+      "result_state": "SUCCESS",
+      "state_message": "",
+      "user_cancelled_or_timedout": false
+    },
+    "status": {
+      "state": "TERMINATED",
+      "termination_details": {
+        "code": "SUCCESS",
+        "message": "",
+        "type": "SUCCESS"
+      }
+    },
+    "tasks": [
+      {
+        "attempt_number": 0,
+        "cleanup_duration": 0,
+        "effective_performance_target": "PERFORMANCE_OPTIMIZED",
+        "end_time": 1791894925596,
+        "environment_key": "demo",
+        "execution_duration": 82000,
+        "run_id": 328727224374002,
+        "run_if": "ALL_SUCCESS",
+        "run_page_url": "https://dbc-939dcb75-eac7.cloud.databricks.com/?o=7474660191855131#job/789648897090823/run/328727224374002",
+        "setup_duration": 4000,
+        "spark_python_task": {
+          "parameters": [
+            "--catalog",
+            "workspace",
+            "--schema",
+            "blueprint_demo",
+            "--expected-host",
+            "https://dbc-939dcb75-eac7.cloud.databricks.com"
+          ],
+          "python_file": "/Workspace/Users/lawsuser4@gmail.com/.bundle/data-platform-blueprint-demo/dev/files/databricks/src/feature_store/ingestion/prepare_demo.py"
+        },
+        "start_time": 1791894838693,
+        "state": {
+          "life_cycle_state": "TERMINATED",
+          "result_state": "SUCCESS",
+          "state_message": "",
+          "user_cancelled_or_timedout": false
+        },
+        "status": {
+          "state": "TERMINATED",
+          "termination_details": {
+            "code": "SUCCESS",
+            "message": "",
+            "type": "SUCCESS"
+          }
+        },
+        "task_key": "prepare_features"
+      },
+      {
+        "attempt_number": 0,
+        "cleanup_duration": 0,
+        "depends_on": [
+          {
+            "task_key": "prepare_features"
+          }
+        ],
+        "effective_performance_target": "PERFORMANCE_OPTIMIZED",
+        "end_time": 1791894969180,
+        "environment_key": "demo",
+        "execution_duration": 41000,
+        "run_id": 1014698285327962,
+        "run_if": "ALL_SUCCESS",
+        "run_page_url": "https://dbc-939dcb75-eac7.cloud.databricks.com/?o=7474660191855131#job/789648897090823/run/1014698285327962",
+        "setup_duration": 2000,
+        "spark_python_task": {
+          "parameters": [
+            "--catalog",
+            "workspace",
+            "--schema",
+            "blueprint_demo",
+            "--expected-host",
+            "https://dbc-939dcb75-eac7.cloud.databricks.com",
+            "--experiment",
+            "/Users/lawsuser4@gmail.com/blueprint-churn-demo"
+          ],
+          "python_file": "/Workspace/Users/lawsuser4@gmail.com/.bundle/data-platform-blueprint-demo/dev/files/databricks/src/mlops/training/training_pipeline.py"
+        },
+        "start_time": 1791894925944,
+        "state": {
+          "life_cycle_state": "TERMINATED",
+          "result_state": "SUCCESS",
+          "state_message": "",
+          "user_cancelled_or_timedout": false
+        },
+        "status": {
+          "state": "TERMINATED",
+          "termination_details": {
+            "code": "SUCCESS",
+            "message": "",
+            "type": "SUCCESS"
+          }
+        },
+        "task_key": "train_and_register"
+      }
+    ],
+    "trigger": "ONE_TIME"
+  },
+  {
+    "cleanup_duration": 0,
+    "creator_user_name": "lawsuser4@gmail.com",
+    "effective_performance_target": "PERFORMANCE_OPTIMIZED",
+    "end_time": 1791894538779,
+    "environments": [
+      {
+        "environment_key": "demo",
+        "spec": {
+          "dependencies": [
+            "databricks-feature-engineering==0.18.1"
+          ],
+          "environment_version": "4"
+        }
+      }
+    ],
+    "execution_duration": 0,
+    "format": "MULTI_TASK",
+    "job_id": 789648897090823,
+    "job_run_id": 159013037583438,
+    "number_in_job": 159013037583438,
+    "original_attempt_run_id": 159013037583438,
+    "run_duration": 88643,
+    "run_id": 159013037583438,
+    "run_name": "[dev lawsuser4] data-platform-blueprint-demo-ml-pipeline",
+    "run_page_url": "https://dbc-939dcb75-eac7.cloud.databricks.com/?o=7474660191855131#job/789648897090823/run/159013037583438",
+    "run_type": "JOB_RUN",
+    "setup_duration": 0,
+    "start_time": 1791894450136,
+    "state": {
+      "life_cycle_state": "INTERNAL_ERROR",
+      "result_state": "FAILED",
+      "state_message": "Task prepare_features failed with message: Workload failed, see run output for details. This caused all downstream tasks to get skipped.",
+      "user_cancelled_or_timedout": false
+    },
+    "status": {
+      "state": "TERMINATED",
+      "termination_details": {
+        "code": "RUN_EXECUTION_ERROR",
+        "message": "Task prepare_features failed with message: Workload failed, see run output for details. This caused all downstream tasks to get skipped.",
+        "type": "CLIENT_ERROR"
+      }
+    },
+    "tasks": [
+      {
+        "attempt_number": 0,
+        "cleanup_duration": 0,
+        "effective_performance_target": "PERFORMANCE_OPTIMIZED",
+        "end_time": 1791894538360,
+        "environment_key": "demo",
+        "execution_duration": 85000,
+        "run_id": 1000532330464207,
+        "run_if": "ALL_SUCCESS",
+        "run_page_url": "https://dbc-939dcb75-eac7.cloud.databricks.com/?o=7474660191855131#job/789648897090823/run/1000532330464207",
+        "setup_duration": 3000,
+        "spark_python_task": {
+          "parameters": [
+            "--catalog",
+            "workspace",
+            "--schema",
+            "blueprint_demo",
+            "--expected-host",
+            "https://dbc-939dcb75-eac7.cloud.databricks.com"
+          ],
+          "python_file": "/Workspace/Users/lawsuser4@gmail.com/.bundle/data-platform-blueprint-demo/dev/files/databricks/src/feature_store/ingestion/prepare_demo.py"
+        },
+        "start_time": 1791894450172,
+        "state": {
+          "life_cycle_state": "TERMINATED",
+          "result_state": "FAILED",
+          "state_message": "Workload failed, see run output for details",
+          "user_cancelled_or_timedout": false
+        },
+        "status": {
+          "state": "TERMINATED",
+          "termination_details": {
+            "code": "RUN_EXECUTION_ERROR",
+            "message": "Workload failed, see run output for details",
+            "type": "CLIENT_ERROR"
+          }
+        },
+        "task_key": "prepare_features"
+      },
+      {
+        "attempt_number": 0,
+        "cleanup_duration": 0,
+        "depends_on": [
+          {
+            "task_key": "prepare_features"
+          }
+        ],
+        "effective_performance_target": "PERFORMANCE_OPTIMIZED",
+        "end_time": 1791894538654,
+        "environment_key": "demo",
+        "execution_duration": 0,
+        "run_id": 406041676495374,
+        "run_if": "ALL_SUCCESS",
+        "run_page_url": "https://dbc-939dcb75-eac7.cloud.databricks.com/?o=7474660191855131#job/789648897090823/run/406041676495374",
+        "setup_duration": 0,
+        "spark_python_task": {
+          "parameters": [
+            "--catalog",
+            "workspace",
+            "--schema",
+            "blueprint_demo",
+            "--expected-host",
+            "https://dbc-939dcb75-eac7.cloud.databricks.com",
+            "--experiment",
+            "/Users/lawsuser4@gmail.com/blueprint-churn-demo"
+          ],
+          "python_file": "/Workspace/Users/lawsuser4@gmail.com/.bundle/data-platform-blueprint-demo/dev/files/databricks/src/mlops/training/training_pipeline.py"
+        },
+        "start_time": 1791894538654,
+        "state": {
+          "life_cycle_state": "SKIPPED",
+          "result_state": "UPSTREAM_FAILED",
+          "state_message": "An upstream task failed.",
+          "user_cancelled_or_timedout": false
+        },
+        "status": {
+          "state": "TERMINATED",
+          "termination_details": {
+            "code": "SKIPPED",
+            "message": "An upstream task failed.",
+            "type": "SUCCESS"
+          }
+        },
+        "task_key": "train_and_register"
+      }
+    ],
+    "trigger": "ONE_TIME"
+  },
+  {
+    "cleanup_duration": 0,
+    "creator_user_name": "lawsuser4@gmail.com",
+    "effective_performance_target": "PERFORMANCE_OPTIMIZED",
+    "end_time": 1791894103447,
+    "environments": [
+      {
+        "environment_key": "demo",
+        "spec": {
+          "dependencies": [
+            "databricks-feature-engineering==0.18.1"
+          ],
+          "environment_version": "4"
+        }
+      }
+    ],
+    "execution_duration": 0,
+    "format": "MULTI_TASK",
+    "job_id": 789648897090823,
+    "job_run_id": 701241676384550,
+    "number_in_job": 701241676384550,
+    "original_attempt_run_id": 701241676384550,
+    "run_duration": 52981,
+    "run_id": 701241676384550,
+    "run_name": "[dev lawsuser4] data-platform-blueprint-demo-ml-pipeline",
+    "run_page_url": "https://dbc-939dcb75-eac7.cloud.databricks.com/?o=7474660191855131#job/789648897090823/run/701241676384550",
+    "run_type": "JOB_RUN",
+    "setup_duration": 0,
+    "start_time": 1791894050466,
+    "state": {
+      "life_cycle_state": "INTERNAL_ERROR",
+      "result_state": "FAILED",
+      "state_message": "Task prepare_features failed with message: Workload failed, see run output for details. This caused all downstream tasks to get skipped.",
+      "user_cancelled_or_timedout": false
+    },
+    "status": {
+      "state": "TERMINATED",
+      "termination_details": {
+        "code": "RUN_EXECUTION_ERROR",
+        "message": "Task prepare_features failed with message: Workload failed, see run output for details. This caused all downstream tasks to get skipped.",
+        "type": "CLIENT_ERROR"
+      }
+    },
+    "tasks": [
+      {
+        "attempt_number": 0,
+        "cleanup_duration": 0,
+        "effective_performance_target": "PERFORMANCE_OPTIMIZED",
+        "end_time": 1791894102941,
+        "environment_key": "demo",
+        "execution_duration": 48000,
+        "run_id": 276119044434572,
+        "run_if": "ALL_SUCCESS",
+        "run_page_url": "https://dbc-939dcb75-eac7.cloud.databricks.com/?o=7474660191855131#job/789648897090823/run/276119044434572",
+        "setup_duration": 4000,
+        "spark_python_task": {
+          "parameters": [
+            "--catalog",
+            "workspace",
+            "--schema",
+            "blueprint_demo",
+            "--expected-host",
+            "https://dbc-939dcb75-eac7.cloud.databricks.com"
+          ],
+          "python_file": "/Workspace/Users/lawsuser4@gmail.com/.bundle/data-platform-blueprint-demo/dev/files/databricks/src/feature_store/ingestion/prepare_demo.py"
+        },
+        "start_time": 1791894050499,
+        "state": {
+          "life_cycle_state": "TERMINATED",
+          "result_state": "FAILED",
+          "state_message": "Workload failed, see run output for details",
+          "user_cancelled_or_timedout": false
+        },
+        "status": {
+          "state": "TERMINATED",
+          "termination_details": {
+            "code": "RUN_EXECUTION_ERROR",
+            "message": "Workload failed, see run output for details",
+            "type": "CLIENT_ERROR"
+          }
+        },
+        "task_key": "prepare_features"
+      },
+      {
+        "attempt_number": 0,
+        "cleanup_duration": 0,
+        "depends_on": [
+          {
+            "task_key": "prepare_features"
+          }
+        ],
+        "effective_performance_target": "PERFORMANCE_OPTIMIZED",
+        "end_time": 1791894103319,
+        "environment_key": "demo",
+        "execution_duration": 0,
+        "run_id": 438777226494198,
+        "run_if": "ALL_SUCCESS",
+        "run_page_url": "https://dbc-939dcb75-eac7.cloud.databricks.com/?o=7474660191855131#job/789648897090823/run/438777226494198",
+        "setup_duration": 0,
+        "spark_python_task": {
+          "parameters": [
+            "--catalog",
+            "workspace",
+            "--schema",
+            "blueprint_demo",
+            "--expected-host",
+            "https://dbc-939dcb75-eac7.cloud.databricks.com",
+            "--experiment",
+            "/Users/lawsuser4@gmail.com/blueprint-churn-demo"
+          ],
+          "python_file": "/Workspace/Users/lawsuser4@gmail.com/.bundle/data-platform-blueprint-demo/dev/files/databricks/src/mlops/training/training_pipeline.py"
+        },
+        "start_time": 1791894103319,
+        "state": {
+          "life_cycle_state": "SKIPPED",
+          "result_state": "UPSTREAM_FAILED",
+          "state_message": "An upstream task failed.",
+          "user_cancelled_or_timedout": false
+        },
+        "status": {
+          "state": "TERMINATED",
+          "termination_details": {
+            "code": "SKIPPED",
+            "message": "An upstream task failed.",
+            "type": "SUCCESS"
+          }
+        },
+        "task_key": "train_and_register"
+      }
+    ],
+    "trigger": "ONE_TIME"
+  }
+]

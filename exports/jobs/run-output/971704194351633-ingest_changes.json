@@ -1,0 +1,4 @@
+{
+  "logs": "{\"auto_loader_rows\": 29, \"batch_no\": 1, \"landed_rows\": 29, \"landing_path\": \"/Volumes/workspace/blueprint_demo/landing/customer_changes/batch_0001\", \"raw_table\": \"workspace.blueprint_demo.raw_customer_changes\", \"step\": \"ingest\"}\n",
+  "logs_truncated": false
+}

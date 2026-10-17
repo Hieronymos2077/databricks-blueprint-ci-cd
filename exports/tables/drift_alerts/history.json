@@ -1,0 +1,20 @@
+[
+  [
+    "0",
+    "2026-10-14T13:49:58.000Z",
+    "75682518775965",
+    "lawsuser4@gmail.com",
+    "CREATE TABLE",
+    "{\"partitionBy\":\"[]\",\"clusterBy\":\"[]\",\"description\":null,\"isManaged\":\"true\",\"properties\":\"{\\\"delta.parquet.compression.codec\\\":\\\"zstd\\\",\\\"delta.parquet.format.version.afe.internal\\\":\\\"2.12.0\\\",\\\"delta.enableDeletionVectors\\\":\\\"true\\\",\\\"delta.parquet.format.version\\\":\\\"2.12.0\\\",\\\"delta.enableRowTracking\\\":\\\"true\\\",\\\"delta.rowTracking.materializedRowCommitVersionColumnName\\\":\\\"_row-commit-version-col-ee8bab2f-e2d2-45ff-9cb4-5270b25ba6c9\\\",\\\"delta.rowTracking.materializedRowIdColumnName\\\":\\\"_row-id-col-046c2a52-0e0a-4f01-8ee2-7c0c834f89b6\\\",\\\"io.unitycatalog.tableId\\\":\\\"f8cd564b-585d-4b64-8831-c9724391d2e2\\\",\\\"blueprint.component\\\":\\\"blueprint-drift-v1\\\"}\",\"statsOnLoad\":\"false\"}",
+    "{\"jobName\":\"[dev lawsuser4] data-platform-blueprint-demo-drift-monitor\",\"jobOwnerId\":\"75682518775965\",\"workspaceId\":\"7474660191855131\",\"jobId\":\"948924464555049\",\"jobRunId\":\"676252877123157\",\"runId\":\"526520314815544\",\"triggerType\":\"manual\"}",
+    null,
+    "81187d3e-5a49-4062-bb54-c53dd163b7a0",
+    "1014-134834-zyqctkxi-v2n",
+    null,
+    "WriteSerializable",
+    "true",
+    "{}",
+    null,
+    "Databricks-Runtime/19.9.x-photon-scala2.13"
+  ]
+]

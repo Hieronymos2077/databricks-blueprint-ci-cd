@@ -1,0 +1,240 @@
+[
+  {
+    "data": {
+      "metrics": [
+        {
+          "key": "drift_alert_count",
+          "step": 0,
+          "timestamp": 1791993342343,
+          "value": 0.0
+        },
+        {
+          "key": "max_psi",
+          "step": 0,
+          "timestamp": 1791993342343,
+          "value": 0.0
+        },
+        {
+          "key": "rows",
+          "step": 0,
+          "timestamp": 1791993342343,
+          "value": 500.0
+        }
+      ],
+      "tags": [
+        {
+          "key": "mlflow.databricks.workspaceID",
+          "value": "7474660191855131"
+        },
+        {
+          "key": "component",
+          "value": "blueprint-drift-v1"
+        },
+        {
+          "key": "mlflow.databricks.cluster.id",
+          "value": "1014-155353-khhbib34-v2n"
+        },
+        {
+          "key": "mlflow.databricks.cluster.info",
+          "value": "{\"cluster_name\":\"\",\"spark_version\":\"client.4.10-scala2.13\",\"autotermination_minutes\":120}"
+        },
+        {
+          "key": "mlflow.databricks.cluster.libraries",
+          "value": "{\"installable\":[],\"redacted\":[]}"
+        },
+        {
+          "key": "mlflow.databricks.jobID",
+          "value": "948924464555049"
+        },
+        {
+          "key": "mlflow.databricks.jobRunID",
+          "value": "820027141750829"
+        },
+        {
+          "key": "mlflow.databricks.jobType",
+          "value": "python"
+        },
+        {
+          "key": "mlflow.databricks.notebook.commandID",
+          "value": "1001791992834684_8745520604491018198_org-7474660191855131-job-948924464555049-run-820027141750829-action-3188101979541038"
+        },
+        {
+          "key": "mlflow.databricks.webappURL",
+          "value": "https://dbc-939dcb75-eac7.cloud.databricks.com"
+        },
+        {
+          "key": "batch_id",
+          "value": "646426876189293"
+        },
+        {
+          "key": "mlflow.databricks.workspaceURL",
+          "value": "https://dbc-939dcb75-eac7.cloud.databricks.com"
+        },
+        {
+          "key": "mlflow.runColor",
+          "value": "#da4c4c"
+        },
+        {
+          "key": "mlflow.runName",
+          "value": "skillful-tern-347"
+        },
+        {
+          "key": "mlflow.source.name",
+          "value": "jobs/948924464555049/run/820027141750829"
+        },
+        {
+          "key": "mlflow.source.type",
+          "value": "JOB"
+        },
+        {
+          "key": "mlflow.user",
+          "value": "lawsuser4@gmail.com"
+        },
+        {
+          "key": "model_uri",
+          "value": "models:/workspace.blueprint_demo.churn_model/1"
+        },
+        {
+          "key": "reference_data_sha256",
+          "value": "85d4220b98b7dae789849ed4440d6a0c1f209df574785b8ede0b55861d2b59a9"
+        },
+        {
+          "key": "training_run_id",
+          "value": "a7f9a3ce9ad043a492c1fccd801984ef"
+        }
+      ]
+    },
+    "info": {
+      "artifact_uri": "dbfs:/databricks/mlflow-tracking/433161743033883/efce49a1cc0b42718949002945e4b263/artifacts",
+      "end_time": 1791993342717,
+      "experiment_id": "433161743033883",
+      "lifecycle_stage": "active",
+      "run_id": "efce49a1cc0b42718949002945e4b263",
+      "run_name": "skillful-tern-347",
+      "run_uuid": "efce49a1cc0b42718949002945e4b263",
+      "start_time": 1791993342104,
+      "status": "FINISHED"
+    },
+    "inputs": {},
+    "outputs": {}
+  },
+  {
+    "data": {
+      "metrics": [
+        {
+          "key": "drift_alert_count",
+          "step": 0,
+          "timestamp": 1791985800984,
+          "value": 0.0
+        },
+        {
+          "key": "max_psi",
+          "step": 0,
+          "timestamp": 1791985800984,
+          "value": 0.0
+        },
+        {
+          "key": "rows",
+          "step": 0,
+          "timestamp": 1791985800984,
+          "value": 500.0
+        }
+      ],
+      "tags": [
+        {
+          "key": "mlflow.databricks.workspaceID",
+          "value": "7474660191855131"
+        },
+        {
+          "key": "component",
+          "value": "blueprint-drift-v1"
+        },
+        {
+          "key": "mlflow.databricks.cluster.id",
+          "value": "1014-134807-51k1jw35-v2n"
+        },
+        {
+          "key": "mlflow.databricks.cluster.info",
+          "value": "{\"cluster_name\":\"\",\"spark_version\":\"client.4.10-scala2.13\",\"autotermination_minutes\":120}"
+        },
+        {
+          "key": "mlflow.databricks.cluster.libraries",
+          "value": "{\"installable\":[],\"redacted\":[]}"
+        },
+        {
+          "key": "mlflow.databricks.jobID",
+          "value": "948924464555049"
+        },
+        {
+          "key": "mlflow.databricks.jobRunID",
+          "value": "526520314815544"
+        },
+        {
+          "key": "mlflow.databricks.jobType",
+          "value": "python"
+        },
+        {
+          "key": "mlflow.databricks.notebook.commandID",
+          "value": "1001791985518711_6291903862594381119_org-7474660191855131-job-948924464555049-run-526520314815544-action-3188101979541038"
+        },
+        {
+          "key": "mlflow.databricks.webappURL",
+          "value": "https://dbc-939dcb75-eac7.cloud.databricks.com"
+        },
+        {
+          "key": "batch_id",
+          "value": "676252877123157"
+        },
+        {
+          "key": "mlflow.databricks.workspaceURL",
+          "value": "https://dbc-939dcb75-eac7.cloud.databricks.com"
+        },
+        {
+          "key": "mlflow.runColor",
+          "value": "#5387dd"
+        },
+        {
+          "key": "mlflow.runName",
+          "value": "bold-sow-267"
+        },
+        {
+          "key": "mlflow.source.name",
+          "value": "jobs/948924464555049/run/526520314815544"
+        },
+        {
+          "key": "mlflow.source.type",
+          "value": "JOB"
+        },
+        {
+          "key": "mlflow.user",
+          "value": "lawsuser4@gmail.com"
+        },
+        {
+          "key": "model_uri",
+          "value": "models:/workspace.blueprint_demo.churn_model/1"
+        },
+        {
+          "key": "reference_data_sha256",
+          "value": "85d4220b98b7dae789849ed4440d6a0c1f209df574785b8ede0b55861d2b59a9"
+        },
+        {
+          "key": "training_run_id",
+          "value": "a7f9a3ce9ad043a492c1fccd801984ef"
+        }
+      ]
+    },
+    "info": {
+      "artifact_uri": "dbfs:/databricks/mlflow-tracking/433161743033883/1fc907a84eb54c249c840da806405cae/artifacts",
+      "end_time": 1791985801478,
+      "experiment_id": "433161743033883",
+      "lifecycle_stage": "active",
+      "run_id": "1fc907a84eb54c249c840da806405cae",
+      "run_name": "bold-sow-267",
+      "run_uuid": "1fc907a84eb54c249c840da806405cae",
+      "start_time": 1791985800766,
+      "status": "FINISHED"
+    },
+    "inputs": {},
+    "outputs": {}
+  }
+]

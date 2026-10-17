@@ -1,0 +1,32 @@
+artifact_path: model
+databricks_runtime: client.4.10
+flavors:
+  python_function:
+    code: null
+    data: data/feature_store
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: databricks.feature_store.mlflow_model
+    python_version: 3.12.3
+    streamable: false
+is_signature_from_type_hint: false
+mlflow_version: 2.22.0
+model_size_bytes: 138967
+model_uuid: 629c36e006d243c28db860fc968630d6
+prompts: null
+run_id: a7f9a3ce9ad043a492c1fccd801984ef
+saved_input_example_info:
+  artifact_path: input_example.json
+  serving_input_path: serving_input_example.json
+  type: json_object
+signature:
+  inputs: '[{"type": "long", "name": "customer_id", "required": true}, {"type": "integer",
+    "name": "tenure_months", "required": false}, {"type": "double", "name": "usage_score",
+    "required": false}, {"type": "integer", "name": "support_tickets", "required":
+    false}]'
+  outputs: '[{"type": "integer", "name": "churn", "required": true}]'
+  params: '[{"name": "result_type", "default": "NO_RESULT_TYPE", "shape": null, "type":
+    "string"}]'
+type_hint_from_example: false
+utc_time_created: '2026-10-13 12:36:00.118056'

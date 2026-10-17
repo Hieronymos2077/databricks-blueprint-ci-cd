@@ -1,0 +1,316 @@
+{
+  "bundle": {
+    "name": "data-platform-blueprint-demo"
+  },
+  "variables": {
+    "workspace_host": {
+      "description": "Selected AWS Databricks workspace URL; verify operator access before deploying",
+      "default": "https://dbc-939dcb75-eac7.cloud.databricks.com"
+    },
+    "catalog": {
+      "description": "Catalog shown in the selected workspace; verify operator privileges before deploying",
+      "default": "workspace"
+    },
+    "schema": {
+      "description": "Isolated demo schema",
+      "default": "blueprint_demo"
+    }
+  },
+  "workspace": {
+    "host": "https://dbc-939dcb75-eac7.cloud.databricks.com",
+    "root_path": "/Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}"
+  },
+  "sync": {
+    "paths": [
+      "../../../databricks",
+      "."
+    ]
+  },
+  "targets": {
+    "dev": {
+      "default": true,
+      "mode": "development"
+    }
+  },
+  "resources": {
+    "jobs": {
+      "ml_pipeline": {
+        "name": "${bundle.name}-ml-pipeline",
+        "max_concurrent_runs": 1,
+        "timeout_seconds": 900,
+        "queue": {
+          "enabled": false
+        },
+        "tasks": [
+          {
+            "task_key": "prepare_features",
+            "spark_python_task": {
+              "python_file": "../../../databricks/src/feature_store/ingestion/prepare_demo.py",
+              "parameters": [
+                "--catalog",
+                "${var.catalog}",
+                "--schema",
+                "${var.schema}",
+                "--expected-host",
+                "${var.workspace_host}"
+              ]
+            },
+            "environment_key": "demo",
+            "timeout_seconds": 300,
+            "max_retries": 0,
+            "retry_on_timeout": false,
+            "disable_auto_optimization": true
+          },
+          {
+            "task_key": "train_and_register",
+            "depends_on": [
+              {
+                "task_key": "prepare_features"
+              }
+            ],
+            "spark_python_task": {
+              "python_file": "../../../databricks/src/mlops/training/training_pipeline.py",
+              "parameters": [
+                "--catalog",
+                "${var.catalog}",
+                "--schema",
+                "${var.schema}",
+                "--expected-host",
+                "${var.workspace_host}",
+                "--experiment",
+                "/Users/${workspace.current_user.userName}/blueprint-churn-demo"
+              ]
+            },
+            "environment_key": "demo",
+            "timeout_seconds": 300,
+            "max_retries": 0,
+            "retry_on_timeout": false,
+            "disable_auto_optimization": true
+          },
+          {
+            "task_key": "drift_monitor",
+            "spark_python_task": {
+              "python_file": "../../../databricks/src/mlops/monitoring/drift_monitor.py",
+              "parameters": [
+                "--catalog",
+                "${var.catalog}",
+                "--schema",
+                "${var.schema}",
+                "--expected-host",
+                "${var.workspace_host}",
+                "--expected-operator",
+                "${workspace.current_user.userName}",
+                "--experiment",
+                "/Users/${workspace.current_user.userName}/blueprint-drift-monitor",
+                "--batch-id",
+                "{{job.run_id}}",
+                "--model-version",
+                "latest",
+                "--self-test",
+                "--reference-source",
+                "${workspace.file_path}/databricks/src/feature_store/ingestion/prepare_demo.py",
+                "--receipt-path",
+                "${workspace.root_path}/runtime/drift-receipts/{{job.run_id}}.json"
+              ]
+            },
+            "environment_key": "demo",
+            "timeout_seconds": 600,
+            "max_retries": 0,
+            "retry_on_timeout": false,
+            "disable_auto_optimization": true,
+            "depends_on": [
+              {
+                "task_key": "train_and_register"
+              }
+            ]
+          }
+        ],
+        "environments": [
+          {
+            "environment_key": "demo",
+            "spec": {
+              "environment_version": "4",
+              "dependencies": [
+                "databricks-feature-engineering==0.18.1"
+              ]
+            }
+          }
+        ]
+      },
+      "drift_monitor": {
+        "name": "${bundle.name}-drift-monitor",
+        "max_concurrent_runs": 1,
+        "timeout_seconds": 900,
+        "queue": {
+          "enabled": false
+        },
+        "tasks": [
+          {
+            "task_key": "drift_monitor",
+            "spark_python_task": {
+              "python_file": "../../../databricks/src/mlops/monitoring/drift_monitor.py",
+              "parameters": [
+                "--catalog",
+                "${var.catalog}",
+                "--schema",
+                "${var.schema}",
+                "--expected-host",
+                "${var.workspace_host}",
+                "--expected-operator",
+                "${workspace.current_user.userName}",
+                "--experiment",
+                "/Users/${workspace.current_user.userName}/blueprint-drift-monitor",
+                "--batch-id",
+                "{{job.run_id}}",
+                "--model-version",
+                "latest",
+                "--self-test",
+                "--reference-source",
+                "${workspace.file_path}/databricks/src/feature_store/ingestion/prepare_demo.py",
+                "--receipt-path",
+                "${workspace.root_path}/runtime/drift-receipts/{{job.run_id}}.json"
+              ]
+            },
+            "environment_key": "demo",
+            "timeout_seconds": 600,
+            "max_retries": 0,
+            "retry_on_timeout": false,
+            "disable_auto_optimization": true
+          }
+        ],
+        "environments": [
+          {
+            "environment_key": "demo",
+            "spec": {
+              "environment_version": "4",
+              "dependencies": [
+                "databricks-feature-engineering==0.18.1"
+              ]
+            }
+          }
+        ]
+      },
+      "platform_pipeline": {
+        "name": "${bundle.name}-platform-pipeline",
+        "max_concurrent_runs": 1,
+        "timeout_seconds": 900,
+        "queue": {
+          "enabled": false
+        },
+        "schedule": {
+          "quartz_cron_expression": "0 0 6 * * ?",
+          "timezone_id": "UTC",
+          "pause_status": "PAUSED"
+        },
+        "tasks": [
+          {
+            "task_key": "ingest_changes",
+            "spark_python_task": {
+              "python_file": "../../../databricks/src/de_patterns/platform_pipeline.py",
+              "parameters": [
+                "--step",
+                "ingest",
+                "--catalog",
+                "${var.catalog}",
+                "--schema",
+                "${var.schema}",
+                "--expected-host",
+                "${var.workspace_host}",
+                "--expected-operator",
+                "${workspace.current_user.userName}",
+                "--run-id",
+                "{{job.run_id}}",
+                "--fixture-source",
+                "${workspace.file_path}/databricks/src/feature_store/ingestion/prepare_demo.py"
+              ]
+            },
+            "environment_key": "demo",
+            "timeout_seconds": 480,
+            "max_retries": 0,
+            "retry_on_timeout": false,
+            "disable_auto_optimization": true
+          },
+          {
+            "task_key": "cdc_scd2",
+            "spark_python_task": {
+              "python_file": "../../../databricks/src/de_patterns/platform_pipeline.py",
+              "parameters": [
+                "--step",
+                "cdc",
+                "--catalog",
+                "${var.catalog}",
+                "--schema",
+                "${var.schema}",
+                "--expected-host",
+                "${var.workspace_host}",
+                "--expected-operator",
+                "${workspace.current_user.userName}",
+                "--run-id",
+                "{{job.run_id}}",
+                "--fixture-source",
+                "${workspace.file_path}/databricks/src/feature_store/ingestion/prepare_demo.py"
+              ]
+            },
+            "environment_key": "demo",
+            "timeout_seconds": 480,
+            "max_retries": 0,
+            "retry_on_timeout": false,
+            "disable_auto_optimization": true,
+            "depends_on": [
+              {
+                "task_key": "ingest_changes"
+              }
+            ]
+          },
+          {
+            "task_key": "batch_score",
+            "spark_python_task": {
+              "python_file": "../../../databricks/src/de_patterns/platform_pipeline.py",
+              "parameters": [
+                "--step",
+                "score",
+                "--catalog",
+                "${var.catalog}",
+                "--schema",
+                "${var.schema}",
+                "--expected-host",
+                "${var.workspace_host}",
+                "--expected-operator",
+                "${workspace.current_user.userName}",
+                "--run-id",
+                "{{job.run_id}}",
+                "--fixture-source",
+                "${workspace.file_path}/databricks/src/feature_store/ingestion/prepare_demo.py",
+                "--model-version",
+                "1",
+                "--receipt-path",
+                "${workspace.root_path}/runtime/platform-receipts/{{job.run_id}}.json"
+              ]
+            },
+            "environment_key": "demo",
+            "timeout_seconds": 480,
+            "max_retries": 0,
+            "retry_on_timeout": false,
+            "disable_auto_optimization": true,
+            "depends_on": [
+              {
+                "task_key": "cdc_scd2"
+              }
+            ]
+          }
+        ],
+        "environments": [
+          {
+            "environment_key": "demo",
+            "spec": {
+              "environment_version": "4",
+              "dependencies": [
+                "databricks-feature-engineering==0.18.1"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+[
+  [
+    "0",
+    "2026-10-13T12:28:40.000Z",
+    "75682518775965",
+    "lawsuser4@gmail.com",
+    "CREATE TABLE AS SELECT",
+    "{\"partitionBy\":\"[]\",\"clusterBy\":\"[]\",\"description\":null,\"isManaged\":\"true\",\"properties\":\"{\\\"delta.parquet.compression.codec\\\":\\\"zstd\\\",\\\"delta.parquet.format.version.afe.internal\\\":\\\"2.12.0\\\",\\\"delta.enableDeletionVectors\\\":\\\"true\\\",\\\"delta.parquet.format.version\\\":\\\"2.12.0\\\",\\\"io.unitycatalog.tableId\\\":\\\"62c0c505-ff45-45bb-a806-d56520ca65ba\\\"}\",\"statsOnLoad\":\"false\"}",
+    "{\"jobName\":\"[dev lawsuser4] data-platform-blueprint-demo-ml-pipeline\",\"jobOwnerId\":\"75682518775965\",\"workspaceId\":\"7474660191855131\",\"jobId\":\"789648897090823\",\"jobRunId\":\"159013037583438\",\"runId\":\"1000532330464207\",\"triggerType\":\"manual\"}",
+    null,
+    "d6da2875-69c1-4ab3-beb7-c16ad2fa2f44",
+    "1013-122801-eyivdswe-v2n",
+    null,
+    "WriteSerializable",
+    "true",
+    "{\"numFiles\":\"1\",\"numOutputRows\":\"500\",\"numOutputBytes\":\"1236\"}",
+    null,
+    "Databricks-Runtime/19.9.x-photon-scala2.13"
+  ]
+]

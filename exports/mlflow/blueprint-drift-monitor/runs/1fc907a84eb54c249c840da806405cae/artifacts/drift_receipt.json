@@ -1,0 +1,132 @@
+{
+  "batch_id": "676252877123157",
+  "model_uri": "models:/workspace.blueprint_demo.churn_model/1",
+  "training_run_id": "a7f9a3ce9ad043a492c1fccd801984ef",
+  "reference_data_sha256": "85d4220b98b7dae789849ed4440d6a0c1f209df574785b8ede0b55861d2b59a9",
+  "reference_rows": 500,
+  "current_rows": 500,
+  "metrics": {
+    "tenure_months": {
+      "psi": 0.0,
+      "reference_missing_rate": 0.0,
+      "current_missing_rate": 0.0,
+      "current_rows": 500,
+      "status": "OK"
+    },
+    "usage_score": {
+      "psi": 0.0,
+      "reference_missing_rate": 0.0,
+      "current_missing_rate": 0.0,
+      "current_rows": 500,
+      "status": "OK"
+    },
+    "support_tickets": {
+      "psi": 0.0,
+      "reference_missing_rate": 0.0,
+      "current_missing_rate": 0.0,
+      "current_rows": 500,
+      "status": "OK"
+    },
+    "prediction": {
+      "psi": 0.0,
+      "reference_missing_rate": 0.0,
+      "current_missing_rate": 0.0,
+      "current_rows": 500,
+      "status": "OK"
+    },
+    "churn": {
+      "psi": 0.0,
+      "reference_missing_rate": 0.0,
+      "current_missing_rate": 0.0,
+      "current_rows": 500,
+      "status": "OK"
+    }
+  },
+  "alert_fields": [],
+  "self_test": {
+    "unchanged_reference": {
+      "tenure_months": {
+        "psi": 0.0,
+        "reference_missing_rate": 0.0,
+        "current_missing_rate": 0.0,
+        "current_rows": 500,
+        "status": "OK"
+      },
+      "usage_score": {
+        "psi": 0.0,
+        "reference_missing_rate": 0.0,
+        "current_missing_rate": 0.0,
+        "current_rows": 500,
+        "status": "OK"
+      },
+      "support_tickets": {
+        "psi": 0.0,
+        "reference_missing_rate": 0.0,
+        "current_missing_rate": 0.0,
+        "current_rows": 500,
+        "status": "OK"
+      },
+      "prediction": {
+        "psi": 0.0,
+        "reference_missing_rate": 0.0,
+        "current_missing_rate": 0.0,
+        "current_rows": 500,
+        "status": "OK"
+      },
+      "churn": {
+        "psi": 0.0,
+        "reference_missing_rate": 0.0,
+        "current_missing_rate": 0.0,
+        "current_rows": 500,
+        "status": "OK"
+      }
+    },
+    "shifted_in_memory": {
+      "tenure_months": {
+        "psi": 6.059604973096768,
+        "reference_missing_rate": 0.0,
+        "current_missing_rate": 0.0,
+        "current_rows": 500,
+        "status": "DRIFT"
+      },
+      "usage_score": {
+        "psi": 6.156316139983861,
+        "reference_missing_rate": 0.0,
+        "current_missing_rate": 0.0,
+        "current_rows": 500,
+        "status": "DRIFT"
+      },
+      "support_tickets": {
+        "psi": 5.773219760582542,
+        "reference_missing_rate": 0.0,
+        "current_missing_rate": 0.0,
+        "current_rows": 500,
+        "status": "DRIFT"
+      },
+      "prediction": {
+        "psi": 0.41362916663821364,
+        "reference_missing_rate": 0.0,
+        "current_missing_rate": 0.0,
+        "current_rows": 500,
+        "status": "DRIFT"
+      },
+      "churn": {
+        "psi": 0.0,
+        "reference_missing_rate": 0.0,
+        "current_missing_rate": 0.0,
+        "current_rows": 500,
+        "status": "OK"
+      }
+    },
+    "source_tables_modified": false,
+    "controls_passed": true
+  },
+  "tables": [
+    "workspace.blueprint_demo.drift_baselines",
+    "workspace.blueprint_demo.drift_metrics",
+    "workspace.blueprint_demo.drift_alerts"
+  ],
+  "source_tables_modified": false,
+  "threshold_psi": 0.2,
+  "monitoring_mlflow_run_id": "1fc907a84eb54c249c840da806405cae"
+}

@@ -1,0 +1,11 @@
+batch_id,observed_at,model_uri,field,psi,reference_missing_rate,current_missing_rate,current_rows,status
+676252877123157,2026-10-14T13:49:51.120325+00:00,models:/workspace.blueprint_demo.churn_model/1,tenure_months,0.0,0.0,0.0,500,OK
+676252877123157,2026-10-14T13:49:51.120325+00:00,models:/workspace.blueprint_demo.churn_model/1,usage_score,0.0,0.0,0.0,500,OK
+676252877123157,2026-10-14T13:49:51.120325+00:00,models:/workspace.blueprint_demo.churn_model/1,support_tickets,0.0,0.0,0.0,500,OK
+676252877123157,2026-10-14T13:49:51.120325+00:00,models:/workspace.blueprint_demo.churn_model/1,prediction,0.0,0.0,0.0,500,OK
+676252877123157,2026-10-14T13:49:51.120325+00:00,models:/workspace.blueprint_demo.churn_model/1,churn,0.0,0.0,0.0,500,OK
+646426876189293,2026-10-14T15:55:34.628249+00:00,models:/workspace.blueprint_demo.churn_model/1,tenure_months,0.0,0.0,0.0,500,OK
+646426876189293,2026-10-14T15:55:34.628249+00:00,models:/workspace.blueprint_demo.churn_model/1,usage_score,0.0,0.0,0.0,500,OK
+646426876189293,2026-10-14T15:55:34.628249+00:00,models:/workspace.blueprint_demo.churn_model/1,support_tickets,0.0,0.0,0.0,500,OK
+646426876189293,2026-10-14T15:55:34.628249+00:00,models:/workspace.blueprint_demo.churn_model/1,prediction,0.0,0.0,0.0,500,OK
+646426876189293,2026-10-14T15:55:34.628249+00:00,models:/workspace.blueprint_demo.churn_model/1,churn,0.0,0.0,0.0,500,OK

@@ -1,0 +1,115 @@
+{
+  "browse_only": false,
+  "cache_version_info": {
+    "metastore_version": -1
+  },
+  "catalog_id": "2c81ee21-dbba-4fff-93e8-3883c73f6650",
+  "catalog_name": "workspace",
+  "columns": [
+    {
+      "column_masks": {},
+      "name": "name",
+      "nullable": true,
+      "position": 0,
+      "type_json": "{\"name\":\"name\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}}",
+      "type_name": "STRING",
+      "type_precision": 0,
+      "type_scale": 0,
+      "type_text": "string"
+    },
+    {
+      "column_masks": {},
+      "name": "value",
+      "nullable": true,
+      "position": 1,
+      "type_json": "{\"name\":\"value\",\"type\":\"long\",\"nullable\":true,\"metadata\":{}}",
+      "type_name": "LONG",
+      "type_precision": 0,
+      "type_scale": 0,
+      "type_text": "bigint"
+    },
+    {
+      "column_masks": {},
+      "name": "updated_at",
+      "nullable": true,
+      "position": 2,
+      "type_json": "{\"name\":\"updated_at\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}}",
+      "type_name": "STRING",
+      "type_precision": 0,
+      "type_scale": 0,
+      "type_text": "string"
+    }
+  ],
+  "created_at": 1791993392134,
+  "created_by": "lawsuser4@gmail.com",
+  "data_access_configuration_id": "00000000-0000-0000-0000-000000000000",
+  "data_source_format": "DELTA",
+  "delta_runtime_properties_kvpairs": {},
+  "effective_auto_maintenance_flag": {
+    "value": "DISABLE"
+  },
+  "effective_predictive_optimization_flag": {
+    "value": "DISABLE"
+  },
+  "enable_auto_maintenance": "DISABLE",
+  "enable_predictive_optimization": "DISABLE",
+  "etag": "CAESCAAAAaE7IguK",
+  "full_name": "workspace.blueprint_demo.platform_watermarks",
+  "generation": 2,
+  "metastore_id": "63d14e6f-0089-46ea-a40c-d0882b28e341",
+  "metastore_version": -1,
+  "name": "platform_watermarks",
+  "owner": "lawsuser4@gmail.com",
+  "properties": {
+    "blueprint.component": "blueprint-platform-v1",
+    "delta.enableDeletionVectors": "true",
+    "delta.enableRowTracking": "true",
+    "delta.feature.appendOnly": "supported",
+    "delta.feature.deletionVectors": "supported",
+    "delta.feature.domainMetadata": "supported",
+    "delta.feature.invariants": "supported",
+    "delta.feature.rowTracking": "supported",
+    "delta.lastCommitTimestamp": "1791993392000",
+    "delta.lastUpdateVersion": "0",
+    "delta.minReaderVersion": "3",
+    "delta.minWriterVersion": "7",
+    "delta.parquet.compression.codec": "zstd",
+    "delta.parquet.format.version": "2.12.0",
+    "delta.parquet.format.version.afe.internal": "2.12.0",
+    "delta.rowTracking.materializedRowCommitVersionColumnName": "_row-commit-version-col-9e28273a-5562-4fd5-a902-7e5e4ba7939a",
+    "delta.rowTracking.materializedRowIdColumnName": "_row-id-col-8e840ee8-9d5f-477f-a819-ebf0e7b256df",
+    "io.unitycatalog.tableId": "dead8c71-eec5-4d58-a122-98bc00501a2a"
+  },
+  "properties_pairs": {
+    "properties": {
+      "blueprint.component": "blueprint-platform-v1",
+      "delta.enableDeletionVectors": "true",
+      "delta.enableRowTracking": "true",
+      "delta.feature.appendOnly": "supported",
+      "delta.feature.deletionVectors": "supported",
+      "delta.feature.domainMetadata": "supported",
+      "delta.feature.invariants": "supported",
+      "delta.feature.rowTracking": "supported",
+      "delta.lastCommitTimestamp": "1791993392000",
+      "delta.lastUpdateVersion": "0",
+      "delta.minReaderVersion": "3",
+      "delta.minWriterVersion": "7",
+      "delta.parquet.compression.codec": "zstd",
+      "delta.parquet.format.version": "2.12.0",
+      "delta.parquet.format.version.afe.internal": "2.12.0",
+      "delta.rowTracking.materializedRowCommitVersionColumnName": "_row-commit-version-col-9e28273a-5562-4fd5-a902-7e5e4ba7939a",
+      "delta.rowTracking.materializedRowIdColumnName": "_row-id-col-8e840ee8-9d5f-477f-a819-ebf0e7b256df",
+      "io.unitycatalog.tableId": "dead8c71-eec5-4d58-a122-98bc00501a2a"
+    }
+  },
+  "row_filters": {},
+  "schema_id": "b559d8f7-1206-4f50-80d7-eb2d3e258f22",
+  "schema_name": "blueprint_demo",
+  "securable_kind": "TABLE_DB_STORAGE",
+  "securable_type": "TABLE",
+  "storage_location": "s3://dbstorage-prod-hpo91wnqst/uc/a484b8ca-0893-4fb9-a142-ab251c64e15c/63d14e6f-0089-46ea-a40c-d0882b28e341/__unitystorage/catalogs/2c81ee21-dbba-4fff-93e8-3883c73f6650/tables/dead8c71-eec5-4d58-a122-98bc00501a2a",
+  "table_id": "dead8c71-eec5-4d58-a122-98bc00501a2a",
+  "table_type": "MANAGED",
+  "updated_at": 1791993449354,
+  "updated_by": "lawsuser4@gmail.com"
+}
