@@ -122,6 +122,8 @@ contains a broker key name only, never its secret value.
 
 ### Your own machine, without the credential broker (Git Bash on Windows)
 
+Quickest path: pull `main`, set `DATABRICKS_TOKEN` in Git Bash, then run `python -B scripts/deploy_local.py`. It does steps 2 to 5 below for you and deploys the current commit.
+
 1. Keep the virtual environment inside the project as `.venv`. It is ignored by Git, so it does not make the tree dirty.
 2. Create `.ci-local.json` in the project root with only `{"enabled": true, "cli": "databricks"}`. It is ignored by Git.
 3. In the same terminal, set `DATABRICKS_TOKEN` to a token from your own workspace (Settings, Developer, Access tokens). The hook inherits it from that terminal.
