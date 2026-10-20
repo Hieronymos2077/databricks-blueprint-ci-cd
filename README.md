@@ -120,6 +120,15 @@ The broker defaults to the current user's `.creds/creds.py`. An already authoriz
 `DATABRICKS_TOKEN` in the process environment is also supported. The config file
 contains a broker key name only, never its secret value.
 
+### Your own machine, without the credential broker (Git Bash on Windows)
+
+1. Keep the virtual environment inside the project as `.venv`. It is ignored by Git, so it does not make the tree dirty.
+2. Create `.ci-local.json` in the project root with only `{"enabled": true, "cli": "databricks"}`. It is ignored by Git.
+3. In the same terminal, set `DATABRICKS_TOKEN` to a token from your own workspace (Settings, Developer, Access tokens). The hook inherits it from that terminal.
+4. Run `python -B scripts/install_git_hook.py` once.
+5. Make sure `git status --short` prints nothing except your intended change, then commit on `main`. The commit stays open while the hook deploys the bundle and waits for the smoke run; that is expected and can take several minutes. Pushing to a remote is not part of deployment.
+6. Check the result: `python -B scripts/ci_cd.py` reports `already_verified` for a commit that has passed.
+
 Commit reviewed code on `main`. The hook then completes checks, deployment and
 the bounded smoke run. To reconcile or retry the same commit manually:
 

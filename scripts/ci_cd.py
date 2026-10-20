@@ -234,13 +234,16 @@ def main():
     if args.check:
         print(json.dumps(checks)); return 0
     cfg = config()
+    print('Blueprint CI/CD: local checks passed, deploying and running the bounded smoke run (this can take several minutes)...', file=sys.stderr, flush=True)
     branch = process(['git', 'symbolic-ref', '--short', 'HEAD']).strip()
     if branch != cfg['deploy_branch']:
         print(json.dumps({'state': 'checks_passed_branch_not_deployed', 'branch': branch})); return 0
     if not cfg.get('enabled'):
         print(json.dumps({'state': 'checks_passed_deployment_disarmed'})); return 0
-    if process(['git', 'status', '--porcelain']).strip():
-        raise ValueError('Commit the reviewed source first; a dirty tree cannot deploy')
+    dirty = process(['git', 'status', '--porcelain']).strip()
+    if dirty:
+        raise ValueError('Commit the reviewed source first; a dirty tree cannot deploy. Uncommitted paths: '
+                         + ', '.join(line[3:] for line in dirty.splitlines()[:10]))
     commit = process(['git', 'rev-parse', 'HEAD']).strip()
     runtime = runtime_path(cfg)
     if runtime.is_relative_to(ROOT):
